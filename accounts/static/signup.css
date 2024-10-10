@@ -67,7 +67,7 @@
 
 /* 배경 이미지와 텍스트 위치 설정 */
 .header-image {
-    background-image: url('/static/signup_img.jpg'); /* 배경 이미지 경로 설정 */
+    background-image: url('/static/signup_img.png'); /* 배경 이미지 경로 설정 */
     background-size: cover; /* 이미지를 화면 크기에 맞춤 */
     background-position: center; /* 이미지를 가운데로 배치 */
     height: 400px; /* 헤더 이미지 높이 */

@@ -1,0 +1,33 @@
+/* 배경 이미지와 텍스트 위치 설정 */
+.header-image {
+    background-image: url('/static/main_img.png'); /* 배경 이미지 설정 */
+    background-size: cover; /* 이미지를 화면 크기에 맞춤 */
+    background-position: center; /* 이미지를 가운데로 배치 */
+    height: 100vh; /* 화면 전체를 채움 */
+    position: relative; /* 텍스트를 겹치기 위해 relative로 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* 텍스트 수직 정렬 */
+}
+
+.overlay h1 {
+    color: white; /* 텍스트 색상 */
+    font-size: 140px; /* 텍스트 크기 */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 100; /* 얇은 두께로 설정 */
+    letter-spacing: 5px; /* 자간을 조정하여 시각적으로 더 얇게 보이게 설정 */
+}
+
+.overlay .bold-text {
+    font-weight: 600; /* FIT 텍스트는 약간 더 두껍게 설정 */
+    letter-spacing: normal; /* 자간을 기본값으로 */
+}
+
+.overlay p {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    line-height: 2.5;
+}
