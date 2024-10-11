@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a> <!-- Home 링크를 list.html로 -->
+                        <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Post</a>
@@ -30,17 +30,11 @@
                         <a class="nav-link" href="#">Chat-Bot</a>
                     </li>
                 </ul>
-                <!-- 회원가입 | 로그인 -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/static/signup.html">회원가입</a>
-                    </li>
-                    <li class="nav-item">
-                        <span class="nav-link">|</span>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/static/login.html">로그인</a>
-                    </li>
+
+                <!-- 로그인 상태에 따라 이 부분이 동적으로 변경됩니다 -->
+                <ul class="navbar-nav" id="auth-links">
+                    <!-- 로그인 상태에서는 프로필, 로그아웃 링크가 들어가고 -->
+                    <!-- 비로그인 상태에서는 회원가입, 로그인 링크가 들어갑니다 -->
                 </ul>
             </div>
         </div>
