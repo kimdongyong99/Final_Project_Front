@@ -1,0 +1,65 @@
+/* 배경 이미지와 텍스트 위치 설정 */
+.headers-image {
+    background-image: url('/static/profile_img.png'); /* 배경 이미지 경로 설정 */
+    background-size: cover; /* 이미지를 화면 크기에 맞춤 */
+    background-position: center; /* 이미지를 가운데로 배치 */
+    height: 550px; /* 헤더 이미지 높이 */
+    position: relative; /* 텍스트를 겹치기 위해 relative로 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+/* 텍스트 설정 */
+.overlay h1 {
+    color: black; /* 흰색 텍스트 */
+    font-size: 48px; /* 큰 글자 크기 */
+    text-align: center; /* 가운데 정렬 */
+    position: absolute; /* 절대 위치 */
+    top: 50%; /* 화면의 중앙에 위치 */
+    left: 50%;
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬을 위해 사용 */
+    padding: 10px 20px; /* 텍스트 주위 여백 */
+    border-radius: 8px; /* 모서리 둥글게 */
+}
+
+/* Content Section 스타일 */
+.content-container {
+    max-width: 800px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.post-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.post-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Favorite Articles and Posts 스타일 */
+.favorite-container {
+    padding: 30px;
+}
+
+.favorite-box {
+    background-color: #f0e6f6;
+    padding: 20px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 0 30px;
+}
+
+.favorite-box h4 {
+    margin-bottom: 10px;
+}
+
+.favorite-box p {
+    margin: 0;
+}
+
