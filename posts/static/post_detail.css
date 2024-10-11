@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.header-image {
+    background-image: url('/static/post_detail_img.jpg'); /* 배경 이미지 경로 설정 */
+    background-size: cover; /* 이미지를 화면 크기에 맞춤 */
+    background-position: center; /* 이미지를 가운데로 배치 */
+    height: 400px; /* 헤더 이미지 높이 */
+    position: relative; /* 텍스트를 겹치기 위해 relative로 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+/* 텍스트 설정 */
+.overlay h1 {
+    color: white; /* 흰색 텍스트 */
+    font-size: 48px; /* 큰 글자 크기 */
+    text-align: center; /* 가운데 정렬 */
+    position: absolute; /* 절대 위치 */
+    top: 50%; /* 화면의 중앙에 위치 */
+    left: 50%;
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬을 위해 사용 */
+    padding: 10px 20px; /* 텍스트 주위 여백 */
+    border-radius: 8px; /* 모서리 둥글게 */
+}
+
+post-detail {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#post-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.post-meta {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+#post-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.hashtags {
+    margin-top: 20px;
+}
+
+.hashtags span {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-right: 5px;
+}
+
+.actions button {
+    margin-right: 10px;
+}
+
+.comments-section {
+    margin-top: 50px;
+}
+
+.comments-section h4 {
+    margin-bottom: 20px;
+}
+
+#comments-list .comment {
+    padding: 15px;
+    background-color: #f1f3f5;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#submit-comment {
+    margin-top: 10px;
+}
