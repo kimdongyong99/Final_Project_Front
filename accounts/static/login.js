@@ -14,8 +14,8 @@ document.getElementById("login-form").addEventListener("submit", async function 
         if (response.ok) {
             const result = await response.json();
             alert("Login successful!");
-            // 로그인 성공 후 base.html로 리디렉션
-            window.location.href = "/static/base.html";  // base.html의 경로로 리디렉션
+            // 로그인 성공 후 list.html로 리디렉션
+            window.location.href = "/static/list.html";  // list.html의 경로로 리디렉션
         } else {
             const errorData = await response.json();
             alert("Error: " + JSON.stringify(errorData));  // 에러 메시지 출력
