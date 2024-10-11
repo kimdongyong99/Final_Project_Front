@@ -1,3 +1,14 @@
+// Daum 우편번호 API
+function execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 검색 결과에서 주소 정보를 가져와서 해당 input에 넣습니다.
+            document.getElementById('address').value = data.address; // 주소
+            document.getElementById('detail_address').focus(); // 상세 주소 입력 필드로 포커스 이동
+        }
+    }).open();
+}
+
 // 이메일로 인증번호 요청
 document.getElementById("send-verification-code").addEventListener("click", async function () {
     const email = document.getElementById("email").value;
@@ -34,6 +45,7 @@ document.getElementById("signup-form").addEventListener("submit", async function
     formData.append("password_confirm", document.getElementById("password_confirm").value);
     formData.append("verification_code", document.getElementById("verification_code").value);
     formData.append("address", document.getElementById("address").value);
+    formData.append("detail_address", document.getElementById("detail_address").value); // 상세 주소 추가
 
     // 프로필 이미지 추가
     const profileImage = document.getElementById("profile_image").files[0];
