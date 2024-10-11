@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 /* 배경 이미지와 텍스트 위치 설정 */
 .headers-image {
     background-image: url('/static/profile_update.png'); /* 배경 이미지 경로 설정 */
@@ -22,4 +24,57 @@
     transform: translate(-50%, -50%); /* 정확한 중앙 정렬을 위해 사용 */
     padding: 10px 20px; /* 텍스트 주위 여백 */
     border-radius: 8px; /* 모서리 둥글게 */
+}
+
+/* 각 항목 이름(레이블)과 입력 필드 정렬 */
+#profile-update-form .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 레이블과 입력 필드를 왼쪽 정렬 */
+    max-width: 50%; /* 필드의 최대 너비 */
+    margin: 0 auto 40px; /* 중앙 정렬 및 아래 여백 추가 */
+    margin-top: 20px;
+}
+
+/* 레이블에 대한 스타일 */
+#profile-update-form label {
+    margin-bottom: 5px; /* 레이블과 입력 필드 사이의 간격 조절 */
+    font-weight: bold; /* 레이블 텍스트 굵게 */
+    font-size: 14px; /* 레이블 글자 크기 */
+}
+
+/* 입력 필드에 대한 스타일 */
+#profile-update-form .form-control {
+    width: 100%; /* 입력 필드의 너비를 부모의 100%로 맞춤 */
+    padding: 10px; /* 입력 필드 안쪽 여백 */
+    box-sizing: border-box; /* 패딩 포함한 박스 크기 계산 */
+    border-radius: 4px;
+}
+
+/* 이메일 입력 필드 및 버튼 그룹의 전체 너비 설정 */
+#profile-update-form .input-group {
+    display: flex; /* 필드와 버튼을 나란히 배치 */
+    align-items: center; /* 입력 필드와 버튼을 수직으로 정렬 */
+}
+
+/* 이메일 입력 필드 크기 조정 */
+#profile-update-form .input-group .form-control {
+    flex-grow: 1; /* 입력란이 남은 공간을 차지하게 함 */
+    border-top-right-radius: 0; /* 오른쪽 모서리를 제거해서 버튼과 자연스럽게 연결 */
+    border-bottom-right-radius: 0;
+}
+
+/* 인증번호 발송 버튼 스타일 */
+#send-verification-code {
+    margin-left: 0; /* 간격 없애기 */
+    border-top-left-radius: 0; /* 버튼의 왼쪽 모서리를 둥글지 않게 설정 */
+    border-bottom-left-radius: 0;
+    color: #000000; /* 버튼 글씨를 검정색으로 설정 */
+    border: 1px solid #000000; /* 버튼 테두리를 검정색으로 설정 */
+    background-color: transparent; /* 배경색을 투명으로 설정 */
+}
+
+/* 마지막 항목(주소)과 버튼 사이 간격 */
+#profile-update-form .form-group:last-of-type {
+    margin-bottom: 80px; /* 버튼과 마지막 항목 사이의 간격을 넓힘 */
 }
