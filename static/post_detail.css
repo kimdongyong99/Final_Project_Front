@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+
+.header-image {
+    background-image: url('운동화.png')!important; /* 배경 이미지 경로 설정 */
+    background-color: black;
+    background-size: cover; /* 이미지를 화면 크기에 맞춤 */
+    background-position: center; /* 이미지를 가운데로 배치 */
+    height: 400px; /* 헤더 이미지 높이 */
+    position: relative; /* 텍스트를 겹치기 위해 relative로 설정 */
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    margin-bottom: 100px;
+}
+/* 텍스트 설정 */
+.overlay h1 {
+    color: white; /* 흰색 텍스트 */
+    font-size: 48px; /* 큰 글자 크기 */
+    text-align: center; /* 가운데 정렬 */
+    position: absolute; /* 절대 위치 */
+    top: 50%; /* 화면의 중앙에 위치 */
+    left: 50%;
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬을 위해 사용 */
+    padding: 10px 20px; /* 텍스트 주위 여백 */
+    border-radius: 8px; /* 모서리 둥글게 */
+}
+#data-container {
+    font-size: 15px;
+    margin: 150px;
+}
