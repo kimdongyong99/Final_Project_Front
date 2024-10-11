@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>자유게시판</title>
+    <title>수정하기</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="post.css">
+    <link rel="stylesheet" href="post_detail.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,36 +24,28 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            color: black;
         }
 
         th,
         td {
-            border: 1px solid #ddd;
-            padding: 10px;
+            border: 1px solid #ccc;
+            padding: 10px 50;
             text-align: left;
         }
 
         th {
             background-color: #f4f4f4;
         }
-        h1 {
-            color: #2e2e2e;
-            text-align: center;
-            margin: 20px;
-        }
-        p {
-            /* color: #2e2e2e; */
-            text-align: center;
-        }
-        button {
-            margin-left: 1000px;
+        textarea {
+            margin: 10px 0;
+            margin-inline: 150px;
+            margin-inline-end: 150px;
+            align-items: center;
         }
     </style>
 </head>
 
-<body>
+<div>
     <!--navbar-->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
@@ -68,7 +60,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="post.html">Post</a>
+                        <a class="nav-link" href="#">post</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Profile</a>
@@ -80,40 +72,41 @@
             </div>
         </div>
     </nav>
+        
     <!-- 배너 -->
-    <div class="header-image">
-        <div class="overlay">
-            <h1>자유게시판</h1>
+        <div class="header-image">
+            <div class="overlay">
+                <h1>수정하기</h1>
+            </div>
         </div>
+        <!--게시글 작성-->
+        <form id="postForm">
+        <div class="post-title">
+            <textarea id="post-title-inp" class="textarea_tit" placeholder="제목을 입력하세요" style="width: 1000px; height: 40px !important;"></textarea></div>
     </div>
-    </div>
-    </div>
-    <!-- 게시글 목록 가져오기 -->
-    <h1>게시글 목록</h1>
-    <button type="button" class="btn btn-dark" onclick="location.href='post_create.html';">글쓰기</button>
-    <div id="data-container" href="post_detail.html"></div>
-    <script src="./post.js">
+    <textarea id="content" name="content" style="width: 1000px; height: 500px !important;" required></textarea><br><br>
+        <form>
+            <div class="form-group">
+            <p></p>
+            <label for="exampleFormControlFile1" style="margin-left: 860px;">첨부파일</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+        </form>
+        <ul id="linkList"></ul>
+        <!--해시태그-->
+        <div id="hashtagsContainer">
+            <input type="text" id="hashtagInput" placeholder="해시태그 입력 (예: #example)" style="width:904px; margin-left: 150px;">
+            <button type="button" id="addHashtagButton" class="btn btn-light" style="position: relative;">추가</button>
+            <ul id="hashtagList"></ul>
+        </div>
+        <p data-ke-size="size16"><br></p></body>
+            <button type="button" class="btn btn-light" style="margin-left: 1000px;">취소</button>
+            <button type="submit" class="btn btn-dark" style="position: relative; left:'500px';"  href="post_detail.html">수정</button>
+        </form>
+    
+        <div id="response"></div>
+        <!--js연결-->
+        <script src="./post_create.js">
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
-
-    <div id="wrap">
-
-        <!-- footer -->
-    <footer class="bg-dark text-white text-center py-4">
-        <div class="container">
-            <p>&copy; 2024 Your Company. All Rights Reserved.</p>
-            <p> 종합병원 </p>
-            <p>
-                <a href="#" class="text-white">개인정보 보호정책</a> |
-                <a href="#" class="text-white">이용 약관</a>
-            </p>
-        </div>
-    </footer>
-    </div>
-
-</body>
-
+    </body>
 </html>

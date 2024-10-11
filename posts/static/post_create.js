@@ -29,6 +29,7 @@ const postData = {
     key1: 'title',
     key2: 'content',
     key3: 'image',
+    key4: 'hashtag',
     // 필요한 데이터를 여기에 추가하세요
 };
 
