@@ -14,9 +14,10 @@ document.getElementById("profile-update-form").addEventListener("submit", async 
     event.preventDefault();
 
     const formData = new FormData();
+    let password=document.getElementById("password").value;
+    let passwordConfirm=document.getElementById("password_confirm").value;
     formData.append("password", document.getElementById("password").value);
     formData.append("password_confirm", document.getElementById("password_confirm").value);
-    formData.append("verification_code", document.getElementById("verification_code").value);
     formData.append("address", document.getElementById("address").value);
     formData.append("detail_address", document.getElementById("detail_address").value); // 상세 주소 추가
     
@@ -27,8 +28,7 @@ document.getElementById("profile-update-form").addEventListener("submit", async 
     }
 
     try {
-        // 현재 비밀번호와 비교 (백엔드에서 현재 비밀번호를 확인하고 동일한 경우 수정하지 않음)
-        const responseUser = await fetch("http://127.0.0.1:8000/api/user-info/", {
+        const responseUser= await fetch(`http://127.0.0.1:8000/api/accounts/${localStorage.getItem("username")}/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -45,7 +45,7 @@ document.getElementById("profile-update-form").addEventListener("submit", async 
         }
 
         // 회원정보 수정 요청
-        const response = await fetch("http://127.0.0.1:8000/api/user-profile-update/", {
+        const response = await fetch(`http://127.0.0.1:8000/api/accounts/${localStorage.getItem("username")}/`, {
             method: "PUT",
             body: JSON.stringify({
                 email: email,
@@ -73,7 +73,6 @@ document.getElementById("profile-update-form").addEventListener("submit", async 
     // 파일 입력 이벤트 리스너 추가
     document.getElementById('profile_image').addEventListener('change', function(event) {
         const file = event.target.files[0];  // 선택된 파일 가져오기
-        console.log("나는 살아있다제발");
         // 파일이 있을 경우 미리보기
         if (file) {
             const reader = new FileReader();  // FileReader 객체 생성
