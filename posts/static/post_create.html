@@ -38,9 +38,7 @@
         }
         textarea {
             margin: 10px 0;
-            margin-inline: 150px;
-            margin-inline-end: 150px;
-            align-items: center;
+            display: flex;
         }
     </style>
 </head>
@@ -81,12 +79,12 @@
         </div>
         <!--게시글 작성-->
         <form id="postForm">
-        <div class="post-title">
+        <div class="post-title" style="width: 80%; margin: 0 auto;">
             <textarea id="post-title-inp" class="textarea_tit" placeholder="제목을 입력하세요" style="width: 1000px; height: 40px !important;"></textarea></div>
     </div>
     <textarea id="content" name="content" style="width: 1000px; height: 500px !important;" required></textarea><br><br>
         <form>
-            <div class="form-group">
+            <div class="form-group" style="width: 80%; margin: 0 auto;">
             <p></p>
             <label for="exampleFormControlFile1" style="margin-left: 860px;">첨부파일</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1">
