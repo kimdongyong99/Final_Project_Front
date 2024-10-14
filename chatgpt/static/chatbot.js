@@ -45,9 +45,13 @@ function sendMessage() {
 // 대화창에 메시지를 추가하는 함수
 function addMessageToChat(role, message) {
     const chatWindow = document.getElementById('chat-messages'); // 채팅 메시지 창
+
+    // 대화창이 숨겨져 있으면 표시
+    chatWindow.style.display = 'block';
+
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('chat-message');
-    messageDiv.classList.add(role);
+    messageDiv.classList.add(role);  // 'user' 또는 'assistant' 클래스 추가
     messageDiv.innerText = message;
     chatWindow.appendChild(messageDiv);
 
