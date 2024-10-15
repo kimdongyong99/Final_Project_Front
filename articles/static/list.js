@@ -116,6 +116,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         document.getElementById('logout-btn').addEventListener('click', function() {
             // 로그아웃 시 토큰 삭제
             localStorage.removeItem('access_token');
+            localStorage.removeItem('username'); //username 삭제//
             alert("로그아웃 되었습니다.");
             window.location.href = '/static/login.html';  // 로그인 페이지로 이동
         });

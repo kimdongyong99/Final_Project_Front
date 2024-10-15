@@ -6,13 +6,12 @@
     <title>회원정보 수정</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="profile_update.css">
-    <stile></stile>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img class="=d-blcok width-80" src="A FIT DAY.png"></a>
+            <a class="navbar-brand" href="#"><img class="d-block width-80" src="A FIT DAY.png"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,9 +22,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Chat-Bot</a>
@@ -43,47 +39,72 @@
 
     <!-- 회원정보 수정 폼 -->
     <div class="container mt-5">
-        <form id="profile-update-form" enctype="multipart/form-data"> <!-- enctype 추가 -->
-            <!-- 아이디 -->
+        <form id="profile-update-form" enctype="multipart/form-data">
+
+            <!-- 프로필 이미지 수정 -->
+            <div class="form-group">
+                <label for="profile_image" class="form-label">프로필 이미지 수정</label>
+                <div class="profile-img-preview">
+                    <img src="/static/update_img.png" alt="프로필 이미지" id="update-profile">  <!-- 기본 이미지 -->
+                </div>
+                <input type="file" class="form-control" id="profile_image" name="update-profile" accept="image/*">
+            </div>
+
+            <!-- 아이디 (수정 불가) -->
             <div class="form-group">
                 <label for="username" class="form-label">아이디</label>
-                <input type="text" class="form-control" id="username" name="username" required>
+                <input type="text" class="form-control" id="username" name="username" value="현재 사용자 아이디" readonly>
             </div>
-    
+
             <!-- 패스워드 -->
             <div class="form-group">
                 <label for="password" class="form-label">패스워드</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-    
+
             <!-- 패스워드 확인 -->
             <div class="form-group">
                 <label for="password_confirm" class="form-label">패스워드 확인</label>
                 <input type="password" class="form-control" id="password_confirm" name="password_confirm" required>
             </div>
             
-            <!-- 이메일 -->
+            <!-- 이메일 (수정 불가) -->
             <div class="form-group">
                 <label for="email" class="form-label">이메일</label>
                 <div class="input-group">
-                    <input type="email" class="form-control" id="email" name="email" required> <!-- 이메일 입력란 -->
-                    <button type="button" class="btn btn-outline-primary" id="send-verification-code">인증번호 발송</button> <!-- 인증번호 발송 버튼 -->
+                    <input type="email" class="form-control" id="email" name="email" value="현재 사용자 이메일" readonly>
                 </div>
             </div>
 
-            <!-- 인증번호 입력 필드 -->
-            <div class="form-group">
-                <label for="verification_code" class="form-label">인증번호</label>
-                <input type="text" class="form-control" id="verification_code" name="verification_code" required>
-            </div>
-    
             <!-- 주소 -->
             <div class="form-group">
                 <label for="address" class="form-label">주소</label>
-                <input type="text" class="form-control" id="address" name="address" required>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="address" name="address" required>
+                    <button type="button" class="btn btn-outline-secondary" onclick="execDaumPostcode()">주소 검색</button>
+                </div>
             </div>
-    
+
+            <div class="form-group">
+                <label for="detail_address" class="form-label">상세 주소</label>
+                <input type="text" class="form-control" id="detail_address" name="detail_address" required>
+            </div>
+
             <button type="submit" class="btn btn-primary">정보 수정 완료</button>
         </form>
     </div>
 
+    <!-- footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>&copy; 2024 Your Company. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 부트스트랩 스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Daum 우편번호 API 스크립트 -->
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="/static/profile_update.js"></script>
+</body>
+</html>

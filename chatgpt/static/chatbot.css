@@ -148,3 +148,63 @@ nav.navbar {
     align-self: flex-start;
     text-align: left;
 }
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+.chat-window {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: #f1f1f1;
+}
+
+.input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background-color: #f8f9fa;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input-area button {
+    margin-left: 10px;
+    padding: 10px 20px;
+}
+
+.chat-messages {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    max-width: 60%;
+    word-wrap: break-word;
+}
+
+.chat-message.user {
+    background-color: #d1e7dd;
+    align-self: flex-end;  /* 오른쪽 끝으로 정렬 */
+    margin-left: auto;     /* 왼쪽 여백을 최대화하여 메시지가 오른쪽 끝에 붙도록 설정 */
+    text-align: right;     /* 텍스트를 오른쪽 정렬 */
+}
+
+.chat-message.assistant {
+    background-color: #f8d7da;
+    align-self: flex-start;  /* 챗봇의 메시지를 왼쪽에 배치 */
+    text-align: left;        /* 텍스트를 왼쪽으로 정렬 */
+}

@@ -13,13 +13,12 @@
 
 /* 텍스트 설정 */
 .overlay h1 {
-    color: black; /* 흰색 텍스트 */
+    color: black;
     font-size: 48px; /* 큰 글자 크기 */
-    text-align: center; /* 가운데 정렬 */
-    position: absolute; /* 절대 위치 */
-    top: 50%; /* 화면의 중앙에 위치 */
-    left: 50%;
-    transform: translate(-50%, -50%); /* 정확한 중앙 정렬을 위해 사용 */
+    text-align: left; /* 가운데 정렬 */
+    position: absolute;
+    top: 0%;
+    left: 30%;
     padding: 10px 20px; /* 텍스트 주위 여백 */
     border-radius: 8px; /* 모서리 둥글게 */
 }
@@ -49,10 +48,11 @@
 .favorite-box {
     background-color: #f0e6f6;
     padding: 20px;
-    width: 100%;
+    width: 60%;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin: 0 0 30px;
+    margin-left: 20%;
 }
 
 .favorite-box h4 {
@@ -63,3 +63,57 @@
     margin: 0;
 }
 
+.top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.left-content{
+    width: 15vw;
+}
+.left-content h2{
+    padding: 0 32px;
+}
+
+.profile_img{
+    display: block;
+    width:55%;
+    height: 160px;
+    min-height: 158px;
+    background: pink;
+    border-radius: 50vw;
+    overflow: hidden;
+}
+
+.profile_img #my-profile{
+    width: 160px;
+    height: 154px;
+    object-fit: cover;
+    margin-top: 20px;
+}
+
+.profile-modibt{
+    display: inline-block;
+    text-decoration: none;
+    color: pink;
+    border: 1px solid pink;
+    padding: 5px 24px;
+    margin-top: 16px;
+    border-radius: 15px;
+}
+
+.right-content{
+    width: 62vw;
+}
+.my_info{
+    font-size: 22px;
+    width: 350px;
+    text-align: center;
+    border: 1px solid pink;
+    background: gray;
+    padding: 7px 0;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    color: pink;
+}
