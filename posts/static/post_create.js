@@ -63,17 +63,17 @@ $(document).ready(function () {
             data: formData,
             success: function (response) {
                 alert('게시글이 성공적으로 저장되었습니다.');
-                window.location.href = 'post_detail.html';  // 저장 후 게시글 상세 페이지로 이동
+                // 응답에서 게시글 ID를 받아 리디렉션
+                window.location.href = `post_detail.html?id=${response.id}`;  // 게시글 ID를 사용해 상세 페이지로 이동
             },
             error: function (xhr) {
                 alert('게시글 저장에 실패했습니다. 오류 메시지: ' + xhr.responseText);
-
             }
         });
 
     });
 });
 
- document.getElementById('cancelButton').addEventListener('click', function() {
-            window.location.href = 'post.html';  // 취소 버튼 클릭 시 이동할 페이지
-        });
+document.getElementById('cancelButton').addEventListener('click', function() {
+    window.location.href = 'post.html';  // 취소 버튼 클릭 시 이동할 페이지
+});
