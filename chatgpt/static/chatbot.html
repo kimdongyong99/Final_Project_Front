@@ -8,40 +8,40 @@
     <link rel="stylesheet" href="chatbot.css"> <!-- 분리된 CSS 파일 -->
 </head>
 <body>
-    <!-- 네비게이션 바 -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">A FIT DAY</a>
+            <a class="navbar-brand" href="/static/main.html"><img class="d-block width-80" src="A FIT DAY.png"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/static/post.html">Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/static/profile.html">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/static/chatbot.html">Chat-Bot</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Chat-bot</a>
+                        <a class="nav-link" href="/static/login.html">로그아웃</a>
                     </li>
                 </ul>
             </div>
-            <div class="navbar-right">
-                <button class="btn btn-outline-danger logout-button">로그아웃</button>
-            </div>
         </div>
     </nav>
-
     <!-- 채팅 영역 -->
     <div class="chat-container">
         <div class="chat-window" id="chat-window">
-            <img src="/static/Chatbot_img.png" alt="Chatbot Icon" class="chatbot-icon">
-            <p class="chatbot-text">챗봇 상담사에게 무엇이든 물어보세요!</p>
+            <img src="/static/Chatbot_img.png" alt="Chatbot Icon" class="chatbot-icon"><br>
+            <p class="chatbot-text">챗봇 상담사에게 무엇이든 물어보세요!<br></p>
             <p class="chatbot-subtext">상담사가 빅데이터를 통해 상담을 도와드리겠습니다.<br> 예시: 손을 다쳤을 때 할 수 있는 운동을 추천해주세요, 저탄고지 식단을 추천해주세요.</p>
         </div>
         <div class="chat-messages" id="chat-messages" style="display:none;"></div>
@@ -51,7 +51,6 @@
             <button id="send-button" class="btn">전송</button>
         </div>
     </div>
-
     <!-- JavaScript 파일을 링크합니다 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="chatbot.js"></script> <!-- 분리된 JavaScript 파일 -->
