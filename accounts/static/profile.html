@@ -8,37 +8,60 @@
     <link rel="stylesheet" href="profile.css">
 </head>
 
-<body>
+    <!-- 네비게이션 바 -->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img class="=d-blcok width-80" src="A FIT DAY.png"></a>
+            <a class="navbar-brand" href="/static/main.html"><img class="d-block width-80" src="A FIT DAY.png"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Post</a>
+                        <a class="nav-link" href="/static/post.html">Post</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link" href="/static/chatbot.html">Chat-Bot</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Chat-Bot</a>
-                    </li>
+                        <a class="nav-link active" aria-current="page" href="/static/list.html">로그아웃</a>
+                        </li>
+                </ul>
+
+                <!-- 로그인 상태에 따라 이 부분이 동적으로 변경됩니다 -->
+                <ul class="navbar-nav" id="auth-links">
+                    <!-- 로그인 상태에서는 프로필, 로그아웃 링크가 들어가고 -->
+                    <!-- 비로그인 상태에서는 회원가입, 로그인 링크가 들어갑니다 -->
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="headers-image">
-        <div class="overlay">
-            <h1>Profile</h1>
-            <img src="" alt="" id="profile_image">
-
+        <div class="overlay top">
+            <div class="left-content">
+                <h2>PROFILE</h2>
+                <span class="profile_img">
+                    <img src="/static/img.png" alt="프로필 이미지" id="my-profile">
+                </span>
+                <a href="#" class="profile-modibt">
+                    회원 정보 수정
+                </a>
+            </div>
+            <div class="right-content">
+                <div class="my_info" id="username">
+                    ID
+                </div>
+                <div class="my_info" id="email">
+                    E-Mail
+                </div>
+                <div class="my_info" id="address">
+                    주소
+                </div>
+            </div>
         </div>
     </div>
 

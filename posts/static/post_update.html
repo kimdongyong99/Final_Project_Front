@@ -1,55 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>수정하기</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="post_detail.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
+    <title>게시글 수정</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="post_update.css"> <!-- CSS 파일 연결 -->
 
-        .post {
-            border: 1px solid #ccc;
-            margin: 10px 0;
-            padding: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px solid #ccc;
-            padding: 10px 50;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-        textarea {
-            margin: 10px 0;
-            margin-inline: 150px;
-            margin-inline-end: 150px;
-            align-items: center;
-        }
-    </style>
 </head>
 
-<div>
-    <!--navbar-->
+<body>
+
+    <!-- 네비게이션 바 -->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img class="d-block width-80" src="A FIT DAY.png"></a>
+            <a class="navbar-brand" href="#"><img class="d-block width-80" src="A FIT DAY.png" alt="A FIT DAY"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -60,7 +26,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">post</a>
+                        <a class="nav-link" href="#">Post</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Profile</a>
@@ -72,41 +38,48 @@
             </div>
         </div>
     </nav>
-        
+
     <!-- 배너 -->
-        <div class="header-image">
-            <div class="overlay">
-                <h1>수정하기</h1>
-            </div>
+    <div class="header-image">
+        <div class="overlay">
+            <h1>게시글 수정</h1>
         </div>
-        <!--게시글 작성-->
-        <form id="postForm">
-        <div class="post-title">
-            <textarea id="post-title-inp" class="textarea_tit" placeholder="제목을 입력하세요" style="width: 1000px; height: 40px !important;"></textarea></div>
     </div>
-    <textarea id="content" name="content" style="width: 1000px; height: 500px !important;" required></textarea><br><br>
-        <form>
-            <div class="form-group">
-            <p></p>
-            <label for="exampleFormControlFile1" style="margin-left: 860px;">첨부파일</label>
+
+    <!-- 게시글 수정 폼 -->
+    <form id="postForm">
+        <!-- 제목 입력 -->
+        <div class="post-title">
+            <textarea id="post-title-inp" class="textarea_tit" placeholder="제목을 입력하세요"></textarea>
+        </div>
+
+        <!-- 내용 입력 -->
+        <textarea id="content" name="content" required placeholder="내용을 입력하세요"></textarea>
+
+        <!-- 파일 업로드 -->
+        <div class="form-group">
+            <label for="exampleFormControlFile1">첨부파일</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div>
-        </form>
-        <ul id="linkList"></ul>
-        <!--해시태그-->
+        </div>
+
+        <!-- 해시태그 추가 -->
         <div id="hashtagsContainer">
-            <input type="text" id="hashtagInput" placeholder="해시태그 입력 (예: #example)" style="width:904px; margin-left: 150px;">
-            <button type="button" id="addHashtagButton" class="btn btn-light" style="position: relative;">추가</button>
+            <input type="text" id="hashtagInput" placeholder="해시태그 입력 (예: #example)">
+            <button type="button" id="addHashtagButton" class="btn btn-light">추가</button>
             <ul id="hashtagList"></ul>
         </div>
-        <p data-ke-size="size16"><br></p></body>
-            <button type="button" class="btn btn-light" style="margin-left: 1000px;">취소</button>
-            <button type="submit" class="btn btn-dark" style="position: relative; left:'500px';"  href="post_detail.html">수정</button>
-        </form>
-    
-        <div id="response"></div>
-        <!--js연결-->
-        <script src="./post_create.js">
-    </script>
-    </body>
+
+        <!-- 버튼 -->
+        <div class="form-buttons">
+            <button type="button" class="btn btn-light">취소</button>
+            <button type="submit" class="btn btn-dark">수정</button>
+        </div>
+    </form>
+
+    <!-- jQuery 및 JS 파일 연결 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./post_update.js"></script> <!-- JS 파일 연결 -->
+
+</body>
+
 </html>
