@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="post_detail.css">
 </head>
 <body>
+    <!-- 네비게이션 바 -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">A FIT DAY</a>
@@ -17,7 +18,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Post</a>
@@ -36,44 +37,42 @@
         </div>
     </nav>
 
+    <!-- 헤더 이미지 -->
     <div class="header-image">
         <div class="overlay">
             <h1>게시글 조회</h1>
         </div>
     </div>
 
-    <div class="container mt-5">
-        <div class="post-detail">
-            <h3 id="post-title">게시글 제목</h3>
-            <div class="post-meta">
-                <span id="author">작성자: 김동용</span> |
-                <span id="likes-count">좋아요: 0</span>
-            </div>
-            <div id="post-image">
-                <img src="https://via.placeholder.com/800x400" alt="게시글 이미지" class="img-fluid">
-            </div>
-            <p id="post-content">여기에 게시글 내용이 들어갑니다. 이 글은 건강과 관련된 내용을 담고 있습니다.</p>
-            <div class="hashtags">
-                <span>#건강</span>
-                <span>#운동</span>
-                <span>#다이어트</span>
-            </div>
-            <div class="actions mt-4">
-                <button class="btn btn-secondary">수정</button>
-                <button class="btn btn-danger">삭제</button>
-            </div>
+    <!-- 게시글 상세 정보 -->
+    <div class="container mt-4">
+        <h1 id="post-title">게시글 제목</h1>
+        <p id="post-info">작성자: <span id="post-author"></span> | 좋아요: <span id="post-likes"></span></p>
+        <img id="post-image" src="" alt="게시글 이미지" class="img-fluid">
+        <p id="post-content">게시글 내용</p>
+
+        <div id="post-hashtags">
+            <!-- 해시태그 목록이 들어갈 자리 -->
         </div>
 
-        <hr>
+        <!-- 좋아요, 수정, 삭제 버튼 -->
+        <button id="like-btn" class="btn btn-primary">좋아요</button>
+        <button id="edit-btn" class="btn btn-secondary">수정</button>
+        <button id="delete-btn" class="btn btn-danger">삭제</button>
+    </div>
 
-        <div class="comments-section">
-            <h4>댓글</h4>
-            </div>
-            <div class="add-comment mt-4">
-                <textarea id="comment-content" class="form-control" placeholder="댓글을 남겨주세요"></textarea>
-                <button id="submit-comment" class="btn btn-primary mt-2">작성</button>
-            </div>
-        </div>
+    <div class="container mt-4">
+        <!-- 댓글 작성 폼 -->
+        <form id="comment-form">
+            <textarea id="comment-input" class="form-control" placeholder="댓글을 입력하세요"></textarea>
+            <button type="submit" class="btn btn-primary mt-2">댓글 작성</button>
+        </form>
+    
+        <!-- 댓글 목록 -->
+        <h3 class="mt-4">댓글 목록</h3>
+        <ul id="comment-list">
+            <!-- 댓글이 여기 표시될 것입니다 -->
+        </ul>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
