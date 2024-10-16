@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 수정 버튼 클릭 시 처리
     document.getElementById('edit-btn').addEventListener('click', function () {
-        window.location.href = `/edit_post.html?id=${postId}`; // 수정 페이지로 이동
+        window.location.href = `/static/post_update.html?id=${postId}`; // 수정 페이지로 이동
     });
 
     // 댓글 작성 처리

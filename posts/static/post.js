@@ -48,7 +48,7 @@ function displayPosts(page) {
             <tr>
                 <td>${post.author}</td>
                 <td>${post.image ? `<img src='${post.image}' style='width:50px;' />` : ' '}</td>
-                <td><a href="/post/${post.id}" style="text-decoration: none; color: inherit;">${post.title}</a></td>
+                <td><a href="/static/post_detail.html?id=${post.id}" style="text-decoration: none; color: inherit;">${post.title}</a></td>
                 <td>${post.likes_count}</td>
             </tr>
         `;
