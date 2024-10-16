@@ -16,7 +16,7 @@ $(document).ready(function () {
                 // 해시태그 설정
                 const hashtags = response.hashtags;
                 hashtags.forEach(function (hashtag) {
-                    addHashtagToList(hashtag);
+                    addHashtagToList(hashtag.replace(/^#/, '')); // #을 제거한 후 리스트에 추가
                 });
             },
             error: function () {
@@ -39,7 +39,11 @@ $(document).ready(function () {
 
     // 해시태그 리스트에 추가하는 함수
     function addHashtagToList(hashtag) {
-        const hashtagElement = `<li>#${hashtag} <button type="button" class="remove-hashtag">제거</button></li>`;
+        // 해시태그가 이미 #으로 시작하지 않으면 #을 붙여서 추가
+        if (!hashtag.startsWith("#")) {
+            hashtag = "#" + hashtag;
+        }
+        const hashtagElement = `<li>${hashtag} <button type="button" class="remove-hashtag">제거</button></li>`;
         $('#hashtagList').append(hashtagElement);
     }
 
@@ -56,7 +60,8 @@ $(document).ready(function () {
         const hashtags = [];
         $('#hashtagList li').each(function () {
             const hashtagText = $(this).text().replace(" 제거", "").trim();
-            hashtags.push(hashtagText.replace("#", ""));
+            // 중복 # 방지를 위해 두 번 붙지 않도록 처리
+            hashtags.push(hashtagText.startsWith("#") ? hashtagText : `#${hashtagText}`);
         });
 
         // 제목과 내용 가져오기
