@@ -21,7 +21,7 @@ document.getElementById("profile-update-form").addEventListener("submit", async 
     formData.append("password_confirm", document.getElementById("password_confirm").value);
     formData.append("address", document.getElementById("address").value);
     formData.append("detail_address", document.getElementById("detail_address").value); // 상세 주소 추가
-    // let formData = new FormData(document.getElementById("profile-update-form"));
+    formData.append("profile_image",document.getElementById("profile_image").files[0]);
 
     // 비밀번호 입력 확인
     if (password !== passwordConfirm) {
@@ -43,9 +43,8 @@ document.getElementById("profile-update-form").addEventListener("submit", async 
         });
 
         if (response.ok) {
-            // alert("회원정보가 성공적으로 수정되었습니다.");
-            // window.location.href = '/static/profile.html'; // 프로필 페이지로 이동
-            console.log(response)
+            alert("회원정보가 성공적으로 수정되었습니다.");
+            window.location.href = '/static/profile.html'; // 프로필 페이지로 이동
         } else {
             const errorData = await response.json();
             alert("오류가 발생했습니다: " + JSON.stringify(errorData));

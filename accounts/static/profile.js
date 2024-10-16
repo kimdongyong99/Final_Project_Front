@@ -45,20 +45,20 @@ async function displayLikedPosts() {
 
     if (access_token && username) {
         // 사용자가 좋아요한 게시글 목록 가져오기
-        await fetch(`http://127.0.0.1:8000/api/posts/like/?username=${username}`, {
-            method: "GET",
+        await fetch(`http://127.0.0.1:8000/api/posts/${postUrl}like/`, {
+            method: "POST",
             headers: {
                 "Authorization": `Bearer ${access_token}` // 토큰 필요 시 사용
             }
         })
         .then(response => response.json())
         .then(data => {
-            const favoriteContainer = document.getElementsByClassName('favorite-box')[0];  // 좋아요한 게시글 컨테이너
+            const favoriteContainer = document.getElementsByClassName('profile-liked-postlist')[0];  // 좋아요한 게시글 컨테이너
             if (favoriteContainer) {
                 favoriteContainer.innerHTML = ''; // 기존 좋아요한 게시글 목록 초기화
                 data.results.forEach(post => {
                     const liElement = document.createElement('li');
-                    liElement.innerHTML = `<a href="/static/post_detail.html?id=${post.id}" style="text-decoration: none; color: inherit;">${post.title}</a>`; 
+                    liElement.innerHTML = `<a href="/static/post_detail.html id=${post.id}" style="text-decoration: none; color: inherit;">${post.title}</a>`; 
                     favoriteContainer.appendChild(liElement);
                 });
             }
@@ -87,22 +87,46 @@ document.addEventListener("DOMContentLoaded", async function() {
             document.getElementById('address').textContent = data.address;
             document.getElementById("detail_address").textContent = data.detail_address;
             console.log(data);
+
+            // 프로필 이미지 설정
+            const profileImage = document.getElementById('my-profile');
+            if (data.profile_image) {
+                // 서버에서 받은 프로필 이미지 경로 설정
+                profileImage.src = `http://127.0.0.1:8000${data.profile_image}`;
+            } else {
+                // 기본 이미지 설정 (프로필 이미지가 없는 경우)
+                profileImage.src = '/static/img.png';
+            }
+
+            console.log(data);  // 데이터를 확인
         })
         .catch(error => {
             console.error('프로필 정보를 불러오는 중 문제가 발생했습니다.', error);
         });
-       // 사용자가 작성한 게시글 목록 가져오기
-       const postResponse = await fetch(`http://127.0.0.1:8000/api/posts/?author=${username}`, {
-        method: "GET",
-        headers: {
-            "Authorization": `Bearer ${access_token}`
-        }
-    }).then(response => response.json())
-      .then(data => {
-          displayPostList(data.results);  // 게시글 제목 목록 표시 함수 호출
-      })
-      .catch(error => {
-          console.error('게시글 목록을 불러오는 중 문제가 발생했습니다:', error);
-      });
-}
+
+        // 사용자가 작성한 게시글 목록 가져오기
+        await fetch(`http://127.0.0.1:8000/api/posts/?author=${username}`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${access_token}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            displayPostList(data.results);  // 게시글 제목 목록 표시 함수 호출
+        })
+        .catch(error => {
+            console.error('게시글 목록을 불러오는 중 문제가 발생했습니다.', error);
+        });
+
+        // 좋아요한 게시글 목록 표시 함수 호출
+        await displayLikedPosts();
+    }
 });
+
+    // 회원 정보 수정 버튼 클릭 시 profile_update.html로 이동
+    const profileEditButton = document.getElementById('profile-edit-btn');
+    profileEditButton.addEventListener('click', function(event) {
+        event.preventDefault();  // 기본 동작 막기
+        window.location.href = '/static/profile_update.html';  // profile_update.html로 이동
+    });
