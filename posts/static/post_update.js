@@ -1,6 +1,8 @@
 $(document).ready(function () {
     const postId = getPostIdFromURL(); // 게시글 ID를 URL에서 추출
     const postUrl = `http://localhost:8000/api/posts/${postId}/`; // 백엔드 수정 API URL
+    // JWT 토큰 가져오기 (예: localStorage에 저장된 토큰)
+    const token = localStorage.getItem('access_token');  // 로그인 시 저장된 JWT 토큰을 가져옴
 
     // 게시글 정보를 불러오기
     function loadPostDetails() {
@@ -14,7 +16,7 @@ $(document).ready(function () {
                 // 해시태그 설정
                 const hashtags = response.hashtags;
                 hashtags.forEach(function (hashtag) {
-                    addHashtagToList(hashtag);
+                    addHashtagToList(hashtag.replace(/^#/, '')); // #을 제거한 후 리스트에 추가
                 });
             },
             error: function () {
@@ -37,7 +39,11 @@ $(document).ready(function () {
 
     // 해시태그 리스트에 추가하는 함수
     function addHashtagToList(hashtag) {
-        const hashtagElement = `<li>#${hashtag} <button type="button" class="remove-hashtag">제거</button></li>`;
+        // 해시태그가 이미 #으로 시작하지 않으면 #을 붙여서 추가
+        if (!hashtag.startsWith("#")) {
+            hashtag = "#" + hashtag;
+        }
+        const hashtagElement = `<li>${hashtag} <button type="button" class="remove-hashtag">제거</button></li>`;
         $('#hashtagList').append(hashtagElement);
     }
 
@@ -54,7 +60,8 @@ $(document).ready(function () {
         const hashtags = [];
         $('#hashtagList li').each(function () {
             const hashtagText = $(this).text().replace(" 제거", "").trim();
-            hashtags.push(hashtagText.replace("#", ""));
+            // 중복 # 방지를 위해 두 번 붙지 않도록 처리
+            hashtags.push(hashtagText.startsWith("#") ? hashtagText : `#${hashtagText}`);
         });
 
         // 제목과 내용 가져오기
@@ -69,10 +76,13 @@ $(document).ready(function () {
             url: postUrl,
             type: 'PUT',
             contentType: 'application/json',
+            headers: {
+                "Authorization": `Bearer ${token}`  // JWT 토큰을 Authorization 헤더에 추가
+            },
             data: JSON.stringify(postData),
             success: function (response) {
                 alert('게시글이 성공적으로 수정되었습니다.');
-                window.location.href = 'post_detail.html'; // 수정 후 게시글 상세 페이지로 이동
+                window.location.href = `post_detail.html?id=${postId}` // 수정 후 게시글 상세 페이지로 이동
             },
             error: function () {
                 alert('게시글 수정에 실패했습니다.');

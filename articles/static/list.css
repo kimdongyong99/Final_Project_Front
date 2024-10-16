@@ -72,7 +72,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px; /* 뉴스 리스트와의 간격 */
+    margin-bottom: 60px; /* 뉴스 리스트와의 간격 */
 }
 
 /* 텍스트 설정 */
@@ -86,4 +86,13 @@ body {
     transform: translate(-50%, -50%); /* 텍스트를 정확히 중앙에 배치 */
     padding: 10px 20px; /* 텍스트 주위 여백 */
     border-radius: 8px;
+}
+
+.search-container {
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+.container.mt-4 {
+    margin-bottom: 40px; /* 푸터와 버튼 사이에 40px 여백 추가 */
 }
