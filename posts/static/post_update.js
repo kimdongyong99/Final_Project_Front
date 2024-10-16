@@ -1,6 +1,8 @@
 $(document).ready(function () {
     const postId = getPostIdFromURL(); // 게시글 ID를 URL에서 추출
     const postUrl = `http://localhost:8000/api/posts/${postId}/`; // 백엔드 수정 API URL
+    // JWT 토큰 가져오기 (예: localStorage에 저장된 토큰)
+    const token = localStorage.getItem('access_token');  // 로그인 시 저장된 JWT 토큰을 가져옴
 
     // 게시글 정보를 불러오기
     function loadPostDetails() {
@@ -69,10 +71,13 @@ $(document).ready(function () {
             url: postUrl,
             type: 'PUT',
             contentType: 'application/json',
+            headers: {
+                "Authorization": `Bearer ${token}`  // JWT 토큰을 Authorization 헤더에 추가
+            },
             data: JSON.stringify(postData),
             success: function (response) {
                 alert('게시글이 성공적으로 수정되었습니다.');
-                window.location.href = 'post_detail.html'; // 수정 후 게시글 상세 페이지로 이동
+                window.location.href = `post_detail.html?id=${postId}` // 수정 후 게시글 상세 페이지로 이동
             },
             error: function () {
                 alert('게시글 수정에 실패했습니다.');
