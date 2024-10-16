@@ -13,7 +13,11 @@ $(document).ready(function () {
 
     // 해시태그 리스트에 추가하는 함수
     function addHashtagToList(hashtag) {
-        const hashtagElement = `<li>#${hashtag} <button type="button" class="remove-hashtag">제거</button></li>`;
+        // 해시태그가 이미 #으로 시작하지 않으면 #을 붙임
+        if (!hashtag.startsWith('#')) {
+            hashtag = '#' + hashtag;
+        }
+        const hashtagElement = `<li>${hashtag} <button type="button" class="remove-hashtag">제거</button></li>`;
         $('#hashtagList').append(hashtagElement);
     }
 
@@ -26,29 +30,25 @@ $(document).ready(function () {
     $('#postForm').submit(function (e) {
         e.preventDefault();
 
-        // 해시태그를 배열로 수집
+        // 해시태그를 배열로 수집 (서버에 보낼 때는 #을 제외한 텍스트만 보냄)
         const hashtags = [];
         $('#hashtagList li').each(function () {
             const hashtagText = $(this).text().replace(" 제거", "").trim();
-            hashtags.push(hashtagText.replace("#", ""));  // 해시태그에서 # 제거
+            hashtags.push(hashtagText.replace("#", ""));  // 해시태그에서 # 제거 후 배열에 추가
         });
 
         // FormData를 사용하여 파일과 데이터를 함께 전송
         const formData = new FormData();
         formData.append('title', $('#post-title-inp').val().trim());
         formData.append('content', $('#content').val().trim());
-        formData.append('hashtags', JSON.stringify(hashtags));  // 해시태그는 JSON 형식으로 전송
+
+        // 쉼표로 구분된 해시태그 문자열로 전송
+        formData.append('hashtags', hashtags.join(','));  // JSON.stringify 대신 join 사용
 
         // 파일 첨부 처리 (name="image"로 변경)
         const fileInput = $('#exampleFormControlFile1')[0].files[0];
         if (fileInput) {
             formData.append('image', fileInput);  // 파일 필드 이름을 'image'로 변경
-        }
-
-        // JWT 토큰이 없으면 경고
-        if (!token) {
-            alert('로그인이 필요합니다.');
-            return;
         }
 
         // 게시글 저장 API 호출 (AJAX 요청)
@@ -70,7 +70,6 @@ $(document).ready(function () {
                 alert('게시글 저장에 실패했습니다. 오류 메시지: ' + xhr.responseText);
             }
         });
-
     });
 });
 
