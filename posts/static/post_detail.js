@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const hashtagContainer = document.getElementById('post-hashtags');
             data.hashtags.forEach(hashtag => {
                 const hashtagElement = document.createElement('span');
-                hashtagElement.innerText = `#${hashtag.hashtag}`;
+                hashtagElement.innerText = `${hashtag.hashtag}`;
                 hashtagContainer.appendChild(hashtagElement);
             });
 
