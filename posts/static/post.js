@@ -4,9 +4,18 @@ let currentPage = 1; // 현재 페이지
 const itemsPerPage = 10; // 한 페이지당 항목 수
 let posts = []; // 전체 게시글 데이터
 
+// 검색어와 검색 타입을 URL에서 가져오기
+const searchParams = new URLSearchParams(window.location.search);
+const searchWord = searchParams.get("search_word");
+const searchType = searchParams.get("type");
 
-// GET 요청
-fetch(apiUrl)
+// GET 요청 (검색어 포함)
+let searchQuery = apiUrl;
+if (searchWord && searchType) {
+    searchQuery += `?search=${searchWord}&type=${searchType}`;
+}
+
+fetch(searchQuery)
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -85,10 +94,12 @@ function updatePagination(currentPage) {
         paginationContainer.appendChild(pageButton);
     }
 }
+
 // 게시글 상세 페이지로 이동하는 함수
 function goToPostDetail(postId) {
     window.location.href = `/post/${postId}`; // 상세 페이지로 이동
 }
+
 // 예시: 게시글 상세 페이지 로드 시
 document.addEventListener('DOMContentLoaded', () => {
     const postId = getPostIdFromUrl(); // URL에서 게시글 ID 가져오기
