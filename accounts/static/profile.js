@@ -25,8 +25,8 @@ function displayPostList(posts) {
         container.appendChild(liElement); 
     });
 
-    // 좋아요한 게시글 목록을 가져와서 추가할 수 있는 위치
-    const favoriteContainer = document.getElementsByClassName('favorite-box')[0];  // 좋아요한 게시글 컨테이너
+    // 좋아요한 게시글 목록을 가져와서 추가
+    const favoriteContainer = document.getElementsByClassName('profile-liked-postlist')[0];  // 좋아요한 게시글 컨테이너
     if (favoriteContainer) {
         // 좋아요한 게시글 추가 처리
         favoriteContainer.innerHTML = ''; // 기존 좋아요한 게시글 목록 초기화
@@ -40,35 +40,80 @@ function displayPostList(posts) {
 
 // 좋아요한 게시글을 가져와서 표시하는 함수 추가
 async function displayLikedPosts() {
-    const access_token = localStorage.getItem('access_token');  // localStorage에서 토큰 확인
+    const access_token = localStorage.getItem('access_token');
     const username = localStorage.getItem("username");
 
     if (access_token && username) {
-        // 사용자가 좋아요한 게시글 목록 가져오기
-        await fetch(`http://127.0.0.1:8000/api/posts/${postUrl}like/`, {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${access_token}` // 토큰 필요 시 사용
+        try {
+            // 사용자가 좋아요한 게시글 목록 가져오기
+            const response = await fetch(`http://127.0.0.1:8000/api/posts/${username}/liked_posts`, {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${access_token}` // 토큰 필요 시 사용
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-        })
-        .then(response => response.json())
-        .then(data => {
+
+            const data = await response.json();
             const favoriteContainer = document.getElementsByClassName('profile-liked-postlist')[0];  // 좋아요한 게시글 컨테이너
             if (favoriteContainer) {
                 favoriteContainer.innerHTML = ''; // 기존 좋아요한 게시글 목록 초기화
+
                 data.results.forEach(post => {
                     const liElement = document.createElement('li');
-                    liElement.innerHTML = `<a href="/static/post_detail.html id=${post.id}" style="text-decoration: none; color: inherit;">${post.title}</a>`; 
+                    const postDetailUrl = `/static/post_detail.html?id=${post.id}`;  // 게시글 ID로 상세 페이지 링크 생성
+                    liElement.innerHTML = `<a href="${postDetailUrl}" style="text-decoration: none; color: inherit;">${post.title}</a>`; 
                     favoriteContainer.appendChild(liElement);
                 });
             }
-        })
-        .catch(error => {
-            console.error('좋아요한 게시글 목록을 불러오는 중 문제가 발생했습니다.', error);
-        });
+        } catch (error) {
+            console.error('좋아요한 게시글 목록을 불러오는 중 문제가 발생했습니다:', error);
+        }
     }
 }
 
+// 좋아요한 기사 목록을 가져와서 표시하는 함수 추가
+async function displayLikedArticles() {
+    const access_token = localStorage.getItem('access_token');
+    const username = localStorage.getItem("username");
+
+    if (access_token && username) {
+        try {
+            // 사용자가 좋아요한 기사 목록 가져오기
+            const response = await fetch(`http://127.0.0.1:8000/api/articles/${username}/liked_articles`, {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${access_token}` // 토큰 필요 시 사용
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const articleContainer = document.getElementsByClassName('profile-liked-articlelist')[0];  // 좋아요한 기사 컨테이너
+            if (articleContainer) {
+                articleContainer.innerHTML = ''; // 기존 좋아요한 기사 목록 초기화
+                data.results.forEach(article => {
+                    const liElement = document.createElement('li');
+                    liElement.innerHTML = `<a href="/static/detail.html?id=${article.id}" style="text-decoration: none; color: inherit;">${article.title}</a>`;
+                    
+                    // 구분선 추가
+                    const hrElement = document.createElement('hr');
+                    liElement.appendChild(hrElement);  // 각 기사 아래에 구분선 추가
+
+                    articleContainer.appendChild(liElement);
+                });
+            }
+        } catch (error) {
+            console.error('좋아요한 기사 목록을 불러오는 중 문제가 발생했습니다:', error);
+        }
+    }
+}
 
 document.addEventListener("DOMContentLoaded", async function() {
 
@@ -119,8 +164,10 @@ document.addEventListener("DOMContentLoaded", async function() {
             console.error('게시글 목록을 불러오는 중 문제가 발생했습니다.', error);
         });
 
-        // 좋아요한 게시글 목록 표시 함수 호출
+        // 좋아요한 게시글 목록 표시
         await displayLikedPosts();
+        // 좋아요한 기사 목록 표시
+        await displayLikedArticles();  // 좋아요한 기사 목록 표시
     }
 });
 
