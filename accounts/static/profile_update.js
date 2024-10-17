@@ -11,6 +11,35 @@ function execDaumPostcode() {
 
 // 비밀번호 확인 및 회원정보 수정 요청
 document.addEventListener("DOMContentLoaded", async function() {
+    // 기존 프로필 이미지를 불러오기
+    try {
+        const username = localStorage.getItem("username");
+        const access_token = localStorage.getItem('access_token');
+        const response = await fetch(`http://127.0.0.1:8000/api/accounts/${username}/`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${access_token}`
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            const profileImage = document.getElementById('update-profile');
+            if (data.profile_image) {
+                // 기존 프로필 이미지를 설정
+                profileImage.src = `http://127.0.0.1:8000${data.profile_image}`;
+            } else {
+                // 기본 프로필 이미지 설정 (이미지가 없는 경우)
+                profileImage.src = '/static/img.png';
+            }
+        } else {
+            console.error("프로필 정보를 불러오는 중 오류가 발생했습니다.");
+        }
+    } catch (error) {
+        console.error("Error during profile fetch request:", error);
+    }
+
+    // 회원정보 수정 폼 제출    
 document.getElementById("profile-update-form").addEventListener("submit", async function (event) {
     event.preventDefault();
 
