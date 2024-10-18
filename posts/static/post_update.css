@@ -10,20 +10,22 @@ body {
 
 .post-title textarea {
     margin: 10px 0;
-    width: 100%;
+    width: 80%;
     height: 40px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    vertical-align: middle;
 }
 
 textarea#content {
     margin: 10px 0;
-    width: 100%;
+    width: 80%;
     height: 300px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    vertical-align: middle;
 }
 
 .form-group {

@@ -50,34 +50,37 @@
     </div>
 
     <!-- 게시글 수정 폼 -->
-    <form id="postForm">
-        <!-- 제목 입력 -->
-        <div class="post-title">
-            <textarea id="post-title-inp" class="textarea_tit" placeholder="제목을 입력하세요"></textarea>
-        </div>
+    <div class="update-contaner" class="text-align: center; vertical-align: middle;">
+        <form id="postForm">
+            <!-- 제목 입력 -->
+            <div class="post-title">
+                <textarea id="post-title-inp" class="textarea_tit" placeholder="제목을 입력하세요"></textarea>
+            </div>
+    
+            <!-- 내용 입력 -->
+            <textarea id="content" name="content" required placeholder="내용을 입력하세요"></textarea>
+    
+            <!-- 파일 업로드 -->
+            <div class="form-group">
+                <label for="exampleFormControlFile1">첨부파일</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+    
+            <!-- 해시태그 추가 -->
+            <div id="hashtagsContainer">
+                <input type="text" id="hashtagInput" placeholder="해시태그 입력 (예: #example)">
+                <button type="button" id="addHashtagButton" class="btn btn-light">추가</button>
+                <ul id="hashtagList"></ul>
+            </div>
+    
+            <!-- 버튼 -->
+            <div class="form-buttons">
+                <button type="button" class="btn btn-light">취소</button>
+                <button type="submit" class="btn btn-dark">수정</button>
+            </div>
+        </form>
+    </div>
 
-        <!-- 내용 입력 -->
-        <textarea id="content" name="content" required placeholder="내용을 입력하세요"></textarea>
-
-        <!-- 파일 업로드 -->
-        <div class="form-group">
-            <label for="exampleFormControlFile1">첨부파일</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-        </div>
-
-        <!-- 해시태그 추가 -->
-        <div id="hashtagsContainer">
-            <input type="text" id="hashtagInput" placeholder="해시태그 입력 (예: #example)">
-            <button type="button" id="addHashtagButton" class="btn btn-light">추가</button>
-            <ul id="hashtagList"></ul>
-        </div>
-
-        <!-- 버튼 -->
-        <div class="form-buttons">
-            <button type="button" class="btn btn-light">취소</button>
-            <button type="submit" class="btn btn-dark">수정</button>
-        </div>
-    </form>
 
     <!-- jQuery 및 JS 파일 연결 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
