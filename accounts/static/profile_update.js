@@ -10,17 +10,48 @@ function execDaumPostcode() {
 }
 
 // 비밀번호 확인 및 회원정보 수정 요청
+document.addEventListener("DOMContentLoaded", async function() {
+    // 기존 프로필 이미지를 불러오기
+    try {
+        const username = localStorage.getItem("username");
+        const access_token = localStorage.getItem('access_token');
+        const response = await fetch(`http://127.0.0.1:8000/api/accounts/${username}/`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${access_token}`
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            const profileImage = document.getElementById('update-profile');
+            if (data.profile_image) {
+                // 기존 프로필 이미지를 설정
+                profileImage.src = `http://127.0.0.1:8000${data.profile_image}`;
+            } else {
+                // 기본 프로필 이미지 설정 (이미지가 없는 경우)
+                profileImage.src = '/static/img.png';
+            }
+        } else {
+            console.error("프로필 정보를 불러오는 중 오류가 발생했습니다.");
+        }
+    } catch (error) {
+        console.error("Error during profile fetch request:", error);
+    }
+
+    // 회원정보 수정 폼 제출    
 document.getElementById("profile-update-form").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const formData = new FormData();
+    let formData = new FormData();
     let password=document.getElementById("password").value;
     let passwordConfirm=document.getElementById("password_confirm").value;
     formData.append("password", document.getElementById("password").value);
     formData.append("password_confirm", document.getElementById("password_confirm").value);
     formData.append("address", document.getElementById("address").value);
     formData.append("detail_address", document.getElementById("detail_address").value); // 상세 주소 추가
-    
+    formData.append("profile_image",document.getElementById("profile_image").files[0]);
+
     // 비밀번호 입력 확인
     if (password !== passwordConfirm) {
         alert("패스워드가 일치하지 않습니다. 다시 확인해주세요.");
@@ -28,31 +59,14 @@ document.getElementById("profile-update-form").addEventListener("submit", async 
     }
 
     try {
-        const responseUser= await fetch(`http://127.0.0.1:8000/api/accounts/${localStorage.getItem("username")}/`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${localStorage.getItem("access_token")}` // 사용자 인증 토큰 추가
-            }
-        });
 
-        const userData = await responseUser.json();
-
-        // 기존 비밀번호와 같으면 수정 불가
-        if (userData.password === password) {
-            alert("새 비밀번호가 기존 비밀번호와 같습니다. 다른 비밀번호를 입력해주세요.");
-            return;
-        }
 
         // 회원정보 수정 요청
         const response = await fetch(`http://127.0.0.1:8000/api/accounts/${localStorage.getItem("username")}/`, {
             method: "PUT",
-            body: JSON.stringify({
-                email: email,
-                password: password, // 비밀번호가 다른 경우에만 업데이트
-            }),
+            body: formData,
             headers: {
-                "Content-Type": "application/json",
+
                 "Authorization": `Bearer ${localStorage.getItem("access_token")}` // 사용자 인증 토큰 추가
             }
         });
@@ -87,3 +101,4 @@ document.getElementById("profile-update-form").addEventListener("submit", async 
             reader.readAsDataURL(file);  // 파일을 읽어 이미지 URL 생성
         }
     });
+});

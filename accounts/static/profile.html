@@ -47,7 +47,7 @@
                 <span class="profile_img">
                     <img src="/static/img.png" alt="프로필 이미지" id="my-profile">
                 </span>
-                <a href="#" class="profile-modibt">
+                <a href="#" class="profile-modibt" id="profile-edit-btn">
                     회원 정보 수정
                 </a>
             </div>
@@ -60,6 +60,9 @@
                 </div>
                 <div class="my_info" id="address">
                     주소
+                </div>
+                <div class="my_info" id="detail_address">
+                    상세 주소
                 </div>
             </div>
         </div>
@@ -79,26 +82,27 @@
         <h3>내가 작성한 게시글</h3>
         <hr>
         <!-- Example of user's posts -->
-        <ul class="post-list">
-            <li>게시글 1</li>
-            <li>게시글 2</li>
-            <li>게시글 3</li>
+        <ul class="profile-post-list">
         </ul>
         <hr>
     </div>
 
     <!-- Favorite Articles and Posts Section -->
-    <div class="favorite-container">
-        <div class="favorite-box">
-            <h4>내가 좋아요 한 기사</h4>
-            <p>기사의 내용을 여기에 표시</p>
+    <div class="content-container">
+            <h4>내가 좋아요 한 게시글</h4>
+            <hr>
+            <ul class="profile-liked-postlist">
+            </ul>
+            <hr>
         </div>
 
-        <div class="favorite-box">
-            <h4>내가 좋아요 한 게시글</h4>
-            <p>게시글 내용을 여기에 표시</p>
+    <div class="content-container">
+            <h4>내가 좋아요 한 기사</h4>
+            <hr>
+            <ul class="profile-liked-articlelist">
+            </ul>
+            <hr>
         </div>
-    </div>
 
         <!-- footer -->
         <footer class="bg-dark text-white text-center py-4">
