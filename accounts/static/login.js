@@ -21,9 +21,14 @@ document.getElementById('login-form').addEventListener('submit', async function(
         if (response.ok) {
             const data = await response.json();
             const access_token = data.access_token;  // 서버로부터 받은 access_token
+            const user_id = data.id;  // 서버로부터 받은 user_id
 
-            // localStorage에 access_token 저장
+            // localStorage에 access_token과 user_id 저장
             localStorage.setItem('access_token', access_token);
+            // user_id도 저장
+            localStorage.setItem('user_id', user_id);  
+            // localStorage에 username 저장
+            localStorage.setItem('username', data.username);
 
             // 로그인 성공 후 페이지 이동 (예: 메인 페이지)
             window.location.href = '/static/list.html';

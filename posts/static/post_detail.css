@@ -64,6 +64,8 @@ post-detail {
     border-radius: 20px;
     font-size: 0.9rem;
     margin-right: 5px;
+    margin-bottom: 10px;  /* 해시태그 아래쪽에 여백 추가 */
+    display: inline-block;
 }
 
 .actions button {
@@ -87,4 +89,12 @@ post-detail {
 
 #submit-comment {
     margin-top: 10px;
+}
+
+/* 좋아요, 수정, 삭제 버튼 사이 여백 추가 */
+button#like-btn,
+button#edit-btn,
+button#delete-btn {
+    margin-top: 20px;  /* 버튼 위쪽 여백 */
+    margin-right: 10px; /* 버튼 사이의 오른쪽 여백 */
 }

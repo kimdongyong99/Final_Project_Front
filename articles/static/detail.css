@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+img {
+    display: block;
+    width: 60%;  /* 이미지를 더 크게 설정 (원하는 비율로 조정 가능) */
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+p {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #ddd;
+}
+
+#comment-section {
+    margin-top: 30px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    margin-top: 10px;
+    background-color: #000;  /* 배경색을 검정색으로 변경 */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #333;  /* hover 시 어두운 회색으로 변경 */
+}
+
+.comment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.comment strong {
+    font-size: 14px;
+    color: #333;
+    margin-right: 10px;
+}
+
+.comment p {
+    margin: 0;
+    text-align: left;  /* 왼쪽 정렬 */
+    flex-grow: 1;  /* 공간을 최대한 차지하도록 */
+}
+
+.comment-buttons {
+    display: flex;
+    gap: 5px;  /* 버튼 사이에 간격 추가 */
+}
+
+.comment-buttons button {
+    padding: 5px 10px;  /* 버튼 크기를 작게 */
+    font-size: 12px;  /* 글씨 크기를 작게 */
+    border-radius: 5px;  /* 둥근 모서리 */
+}
+
+.comment-buttons .edit-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+}
+
+.comment-buttons .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
