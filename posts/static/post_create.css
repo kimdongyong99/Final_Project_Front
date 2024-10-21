@@ -25,3 +25,32 @@
     border-radius: 8px; /* 모서리 둥글게 */
 }
 
+#hashtagList li button {
+    background: none;
+    border: none;
+    color: red;
+    margin-left: 5px;
+}
+
+.text-container {
+    margin: 10% 5% 10% 5%;
+    text-align: center;
+}
+
+.post {
+    padding: 0 7% 0 7%;
+}
+
+.form-group {
+    text-align: left;
+    margin: 1% 0 1% 7%;
+}
+
+.hashtag {
+    margin-bottom: 2%;
+}
+
+.button {
+    text-align: right;
+    margin-right: 7%;
+}

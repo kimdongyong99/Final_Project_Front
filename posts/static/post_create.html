@@ -13,13 +13,6 @@
             font-family: Arial, sans-serif;
         }
 
-        .post {
-            /* border: 1px solid #ccc; */
-            margin: 10px 0;
-            padding: 10px;
-            text-align: center;
-        }
-
     </style>
 </head>
 
@@ -61,35 +54,35 @@
     </div>
 
     <!-- 게시글 작성 -->
-    <div class="post" style="text-align: center; vertical-align: middle;">
+    <div class="text-container">
         <form id="postForm" enctype="multipart/form-data"> <!-- enctype 추가 -->
-            <div class="post-title" style="text-align: center;">
-                <textarea id="post-title-inp" class="textarea_tit" placeholder="제목을 입력하세요"
-                    style="width: 80%; height: 40px !important;"></textarea>
+            <div class="post">
+                <textarea id="post-title-inp" placeholder="제목을 입력하세요" class="form-control" cols="180" rows="2"></textarea>
+                <br>
+                <textarea id="content" name="content" class="form-control" cols="180" rows="40"required></textarea>
             </div>
-            <textarea id="content" name="content" style="width: 80%; height: 600px !important; margin-bottom: 20px;" required></textarea>
-            </form>
-        </div>
+
+    
             <!-- 파일 첨부 -->
-            <div class="form-group" style="margin-left: 800px;" style="text-align: center; vertical-align: middle;">
+            <div class="form-group">
                 <label for="exampleFormControlFile1">첨부파일</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <input type="file" id="exampleFormControlFile1">
             </div>
     
             <!-- 해시태그 -->
-            <div id="hashtagsContainer" style="text-align: center; vertical-align: middle;">
-                <input type="text" id="hashtagInput" placeholder="해시태그 입력 (예: #example)"
-                    style="width:76%;">
+            <div id="hashtagsContainer" class="hashtag">
+                <input type="text" id="hashtagInput" placeholder="해시태그 입력 (예: #example)" size="176">
                 <button type="button" id="addHashtagButton" class="btn btn-light">추가</button>
                 <ul id="hashtagList"></ul>
             </div>
     
             <!-- 버튼 -->
-            <div style="float: right; margin-right: 10% ;">
+            <div class="button">
                 <button type="button" id="cancelButton" class="btn btn-light">취소</button>
-                <button type="submit" class="btn btn-dark" >저장</button>
+                <button type="submit" class="btn btn-dark">저장</button>
             </div>
-
+        </form>
+    </div>
 
     <!-- js 연결 -->
     <script src="./post_create.js"></script>
