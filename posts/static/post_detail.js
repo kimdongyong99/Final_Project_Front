@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const postId = window.location.search.split('=')[1]; // URL에서 postId 추출
-    const postUrl = `http://127.0.0.1:8000/api/posts/${postId}/`;
+    const postUrl = `http://3.38.95.210/api/posts/${postId}/`;
 
     // JWT 토큰 및 로그인한 사용자 정보 가져오기
     const token = localStorage.getItem('access_token');
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
             content: commentContent
         };
 
-        fetch(`http://127.0.0.1:8000/api/posts/${postId}/comment/`, {
+        fetch(`http://3.38.95.210/api/posts/${postId}/comment/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // 댓글 목록 가져오기
-    fetch(`http://127.0.0.1:8000/api/posts/${postId}/comment/`)
+    fetch(`http://3.38.95.210/api/posts/${postId}/comment/`)
         .then(response => response.json())
         .then(data => {
             const commentList = document.getElementById('comment-list');
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 댓글 수정 함수
     function editComment(commentId, newContent) {
-        const editUrl = `http://127.0.0.1:8000/api/posts/comment/${commentId}`;  // URL에 commentId 추가
+        const editUrl = `http://3.38.95.210/api/posts/comment/${commentId}`;  // URL에 commentId 추가
 
         fetch(editUrl, {
             method: 'PUT',
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 댓글 삭제 함수
     function deleteComment(commentId) {
-        const deleteUrl = `http://127.0.0.1:8000/api/posts/comment/${commentId}`;  // URL에 commentId 추가
+        const deleteUrl = `http://3.38.95.210/api/posts/comment/${commentId}`;  // URL에 commentId 추가
 
         if (confirm("정말로 이 댓글을 삭제하시겠습니까?")) {
             fetch(deleteUrl, {
