@@ -21,43 +21,6 @@
             padding: 10px;
         }
 
-            /* .table-container { */
-        /* max-width: 800px; 최대 너비 설정 */
-        /* margin: 20px auto; 중앙 정렬 */
-        /* margin: 0;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    } */
-
-    /* .table {
-        width: 100%;
-        border-collapse: collapse; */
-        /* background-color: #ffffff; 배경색 */
-    /* } */
-
-    /* .table th, .table td {
-        border: 1px solid #ddd;
-        padding: 12px;
-        text-align: center;
-    } */
-/* 
-    .table th { */
-        /* background-color: none; 헤더 배경색 */
-        /* color: rgb(0, 0, 0); 헤더 텍스트 색상 */
-    /* } */
-    /* .table td {
-        border: 4px solid #060606;
-    } */
-
-    /* .table tr:nth-child(even) { */
-        /* background-color: #f2f2f2; 짝수 행 배경색 */
-    /* } */
-
-    /* .table tr:hover {
-        background-color: #f1f1f1; /* 마우스 호버 효과 */
-    /* } */
-
     .post-image {
         width: 50px;
         height: auto; /* 이미지 비율 유지 */
@@ -157,7 +120,7 @@
     </div>
     </div>
     <!-- 검색 -->
-    <div class="d-flex justify-content-center" style="margin: 20px;">
+    <div class="d-flex justify-content-center" style="margin: 40px;">
         <form action="post.html" method="GET">
             <input type="text" name="search_word" placeholder="검색어를 입력하세요" class="d-block:80;" required>
             <select name="type">
@@ -172,7 +135,7 @@
         <!-- 게시글 목록 가져오기 -->
 <div class="container">
     <h1>게시글 목록</h1>
-    <button type="button" class="btn btn-dark" onclick="location.href='post_create.html';" style="float: right;">글쓰기</button><br>
+    <button type="button" class="btn btn-dark" onclick="location.href='post_create.html';" style="float: right; margin-right: 100px;">글쓰기</button><br><br><br>
     <div id="data-container" class="row text-center" href="post_detail.html"></div>
 </div>
 

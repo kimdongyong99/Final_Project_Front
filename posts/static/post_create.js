@@ -17,7 +17,7 @@ $(document).ready(function () {
         if (!hashtag.startsWith('#')) {
             hashtag = '#' + hashtag;
         }
-        const hashtagElement = `<li>${hashtag} <button type="button" class="remove-hashtag">제거</button></li>`;
+        const hashtagElement = `<li style="list-style-type: none;">${hashtag} <button type="button" class="remove-hashtag">제거</button></li>`;
         $('#hashtagList').append(hashtagElement);
     }
 
@@ -75,6 +75,7 @@ $(document).ready(function () {
 
 document.getElementById('cancelButton').addEventListener('click', function() {
     window.location.href = 'post.html';  // 취소 버튼 클릭 시 이동할 페이지
+
 });
 
 document.addEventListener("DOMContentLoaded", async function() {
@@ -118,3 +119,4 @@ document.addEventListener("DOMContentLoaded", async function() {
             </li>
         `;
     }});
+

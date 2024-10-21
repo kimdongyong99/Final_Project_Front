@@ -56,7 +56,7 @@ function displayPosts(page) {
         tableContent += `
             <tr>
                 <td>${post.author}</td>
-                <td>${post.image ? `<img src='${post.image}' style='width:50px;' />` : ' '}</td>
+                <td>${post.image ? `<img src='이미지-아이콘.png' style='width:30px;' />` : ' '}</td>
                 <td><a href="/static/post_detail.html?id=${post.id}" style="text-decoration: none; color: inherit;">${post.title}</a></td>
                 <td>${post.likes_count}</td>
             </tr>
