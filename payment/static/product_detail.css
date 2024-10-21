@@ -1,0 +1,99 @@
+#product-detail {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;  /* 컨테이너 크기를 키움 */
+    margin: 100px auto 100px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.product-image {
+    width: 450px;  /* 원하는 너비로 고정 */
+    height: 450px;  /* 원하는 높이로 고정 */
+    border-radius: 8px;
+    object-fit: cover;  /* 이미지를 잘라서라도 고정된 크기에 맞춤 */
+}
+
+
+.product-info {
+    max-width: 50%;
+    text-align: left;
+}
+
+.product-info h2 {
+    font-size: 2.5rem; /* 제목 크기 조정 */
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.product-price {
+    font-size: 2rem; /* 가격 크기 조정 */
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #d9534f;
+}
+
+.product-description {
+    font-size: 1.2rem; /* 설명 크기 조정 */
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+#kakaopay-button, #toss-button {
+    padding: 15px 40px;  /* 버튼 크기 확대 */
+    font-size: 1.1rem;   /* 버튼 글자 크기 조정 */
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#kakaopay-button {
+    background-color: #FFDD00;
+    color: #3c1e1e;
+    border: none;
+}
+
+#toss-button {
+    background-color: #0071e3;
+    color: white;
+    border: none;
+}
+
+#kakaopay-button:hover, #toss-button:hover {
+    opacity: 0.9;
+}
+
+/* 배경 이미지와 텍스트 위치 설정 */
+.header-image {
+    background-image: url('/static/market_img.png'); /* 배경 이미지 경로 설정 */
+    background-size: cover; /* 이미지를 화면 크기에 맞춤 */
+    background-position: center; /* 이미지를 가운데로 배치 */
+    height: 400px; /* 이미지 높이 설정 */
+    position: relative; /* 텍스트를 겹치기 위해 relative로 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px; /* 뉴스 리스트와의 간격 */
+}
+
+/* 텍스트 설정 */
+.overlay h1 {
+    color: white; /* 텍스트 색상 */
+    font-size: 48px; /* 글자 크기 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 텍스트를 정확히 중앙에 배치 */
+    padding: 10px 20px; /* 텍스트 주위 여백 */
+    border-radius: 8px;
+}

@@ -11,33 +11,40 @@
 </head>
 
 <body>
-
-    <!-- 네비게이션 바 -->
+    <!--navbar-->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img class="d-block width-80" src="A FIT DAY.png" alt="A FIT DAY"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="/static/main.html"><img class="d-block width-80" src="A FIT DAY.png"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/static/post.html">Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/static/product.html">Market</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/static/map.html">Map</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/static/chatbot.html">Chat-Bot</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/static/list.html">Home</a>
-                    </li>
+                        <a class="nav-link" href="/static/profile.html">프로필</a>
+                        </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/static/post.html">Post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/static/profile.html">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/static/chatbot.html">Chat-Bot</a>
+                        <a class="nav-link" href="/static/login.html">로그아웃</a>
                     </li>
                 </ul>
-            </div>
-            <div class="navbar-right">
-                <a class="nav-link" href="#">로그아웃</a>
             </div>
         </div>
     </nav>
@@ -45,38 +52,37 @@
     <!-- 배너 -->
     <div class="header-image">
         <div class="overlay">
-            <h1>게시글 수정</h1>
+            <h1>게시글 작성</h1>
         </div>
     </div>
 
-    <!-- 게시글 수정 폼 -->
-    <div class="update-contaner" class="text-align: center; vertical-align: middle;">
-        <form id="postForm">
-            <!-- 제목 입력 -->
-            <div class="post-title">
-                <textarea id="post-title-inp" class="textarea_tit" placeholder="제목을 입력하세요"></textarea>
+    <!-- 게시글 작성 -->
+    <div class="text-container">
+        <form id="postForm" enctype="multipart/form-data"> <!-- enctype 추가 -->
+            <div class="post">
+                <textarea id="post-title-inp" placeholder="제목을 입력하세요" class="form-control" cols="180" rows="2"></textarea>
+                <br>
+                <textarea id="content" name="content" class="form-control" cols="180" rows="40"required></textarea>
             </div>
+
     
-            <!-- 내용 입력 -->
-            <textarea id="content" name="content" required placeholder="내용을 입력하세요"></textarea>
-    
-            <!-- 파일 업로드 -->
+            <!-- 파일 첨부 -->
             <div class="form-group">
                 <label for="exampleFormControlFile1">첨부파일</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <input type="file" id="exampleFormControlFile1">
             </div>
     
-            <!-- 해시태그 추가 -->
-            <div id="hashtagsContainer">
-                <input type="text" id="hashtagInput" placeholder="해시태그 입력 (예: #example)">
+            <!-- 해시태그 -->
+            <div id="hashtagsContainer" class="hashtag">
+                <input type="text" id="hashtagInput" placeholder="해시태그 입력 (예: #example)" size="176">
                 <button type="button" id="addHashtagButton" class="btn btn-light">추가</button>
                 <ul id="hashtagList"></ul>
             </div>
     
             <!-- 버튼 -->
-            <div class="form-buttons">
-                <button type="button" class="btn btn-light">취소</button>
-                <button type="submit" class="btn btn-dark">수정</button>
+            <div class="button">
+                <button type="button" id="cancelButton" class="btn btn-light">취소</button>
+                <button type="submit" class="btn btn-dark">저장</button>
             </div>
         </form>
     </div>
