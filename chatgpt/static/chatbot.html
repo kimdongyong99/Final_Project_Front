@@ -8,31 +8,36 @@
     <link rel="stylesheet" href="chatbot.css"> <!-- 분리된 CSS 파일 -->
 </head>
 <body>
+    <!-- 네비게이션 바 -->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/static/main.html"><img class="d-block width-80" src="A FIT DAY.png"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/static/post.html">Post</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/static/profile.html">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/static/chatbot.html">Chat-Bot</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ms-auto">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/static/login.html">로그아웃</a>
+                        <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/static/post.html">Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/static/product.html">Market</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/static/map.html">Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/static/chatbot.html">Chat-Bot</a>
+                    </li>
+                </ul>
+
+                <!-- 로그인 상태에 따라 이 부분이 동적으로 변경됩니다 -->
+                <ul class="navbar-nav" id="auth-links">
+                    <!-- 로그인 상태에서는 프로필, 로그아웃 링크가 들어가고 -->
+                    <!-- 비로그인 상태에서는 회원가입, 로그인 링크가 들어갑니다 -->
                 </ul>
             </div>
         </div>
