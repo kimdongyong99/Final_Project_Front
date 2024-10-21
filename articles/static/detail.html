@@ -11,24 +11,33 @@
     <!-- 네비게이션 바 -->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/static/main.html">A FIT DAY</a>
+            <a class="navbar-brand" href="/static/main.html"><img class="d-block width-80" src="A FIT DAY.png"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Post</a>
+                        <a class="nav-link active" aria-current="page" href="/static/post.html">Post</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link active" aria-current="page" href="/static/product.html">Market</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Chat-Bot</a>
+                        <a class="nav-link active" aria-current="page" href="/static/map.html">Map</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/static/chatbot.html">Chat-Bot</a>
+                    </li>
+                </ul>
+
+                <!-- 로그인 상태에 따라 이 부분이 동적으로 변경됩니다 -->
+                <ul class="navbar-nav" id="auth-links">
+                    <!-- 로그인 상태에서는 프로필, 로그아웃 링크가 들어가고 -->
+                    <!-- 비로그인 상태에서는 회원가입, 로그인 링크가 들어갑니다 -->
                 </ul>
             </div>
         </div>
@@ -53,7 +62,7 @@
     </div>
 
     <!-- 부트스트랩 스크립트 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
     <!-- detail.js 파일 연결 -->
     <script src="/static/detail.js"></script>

@@ -2,17 +2,18 @@ let currentPage = 1;  // 현재 페이지를 저장하는 변수
 
 // 뉴스 데이터를 HTML에 동적으로 추가하는 함수
 function displayNews(newsData) {
-    console.log(newsData);
-
     const newsContainer = document.getElementById("news-container");
     newsContainer.innerHTML = "";  // 기존 내용 초기화
 
-    // newsData.news를 사용하여 뉴스 항목을 반복 처리
+    // LocalStorage에서 사용자가 좋아요한 기사 목록 가져오기
+    let likedArticles = JSON.parse(localStorage.getItem('likedArticles')) || [];
+
     newsData.news.forEach(newsItem => {
-        console.log(newsItem.total_likes);  // 좋아요 수 출력하여 확인
-        
         const newsElement = document.createElement("div");
         newsElement.classList.add("news-item");
+
+        // LocalStorage에 저장된 likedArticles에서 이 기사가 좋아요되었는지 확인
+        const heartClass = likedArticles.includes(newsItem.id) ? 'fas fa-heart' : 'far fa-heart';
 
         const newsContent = `
             <div class="card h-100">
@@ -22,7 +23,9 @@ function displayNews(newsData) {
                         <a href="/static/detail.html?id=${newsItem.id}">${newsItem.title}</a>
                     </h5>
                     <p class="card-text">좋아요 수: ${newsItem.total_likes}</p>
-                    <button class="btn btn-primary" onclick="likeArticle(${newsItem.id})">좋아요</button>
+                    <button class="btn like-btn" onclick="likeArticle(${newsItem.id}, this)">
+                        <i class="${heartClass}"></i>
+                    </button>
                 </div>
             </div>
         `;
@@ -31,14 +34,13 @@ function displayNews(newsData) {
     });
 
     // 페이지네이션 버튼 상태 업데이트
-    document.getElementById("prev-btn").disabled = !newsData.has_previous;  // 이전 페이지가 없는 경우 버튼 비활성화
-    document.getElementById("next-btn").disabled = !newsData.has_next;      // 다음 페이지가 없는 경우 버튼 비활성화
+    document.getElementById("prev-btn").disabled = !newsData.has_previous;
+    document.getElementById("next-btn").disabled = !newsData.has_next;
 }
 
 // 뉴스 데이터를 가져오는 함수 (페이지를 쿼리로 포함)
 async function fetchNews(page = 1, search = "") {
     const url = search ? `http://127.0.0.1:8000/api/articles/news/?search=${search}&page=${page}` : `http://127.0.0.1:8000/api/articles/news/?page=${page}`;
-
     try {
         const response = await fetch(url);
         if (response.ok) {
@@ -51,7 +53,7 @@ async function fetchNews(page = 1, search = "") {
             } else {
                 displayNews(data);  // 전체 데이터를 전달
             }
-            
+
             currentPage = page;  // 현재 페이지 업데이트
         } else {
             console.error("Failed to fetch news");
@@ -62,20 +64,51 @@ async function fetchNews(page = 1, search = "") {
 }
 
 // 좋아요 버튼을 클릭했을 때 호출되는 함수
-async function likeArticle(articleId) {
+async function likeArticle(articleId, button) {
     try {
+        const accessToken = localStorage.getItem('access_token');
+        if (!accessToken) {
+            // 로그인되지 않은 경우 경고창을 띄우고 로그인 페이지로 이동
+            alert("로그인이 필요합니다.");
+            window.location.href = "/static/login.html";
+            return; // 로그인되지 않은 경우 함수 종료
+        }
+
         const response = await fetch(`http://127.0.0.1:8000/api/articles/${articleId}/like/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${localStorage.getItem("access_token")}` // 토큰 필요 시 사용
+                "Authorization": `Bearer ${accessToken}` // 토큰 필요 시 사용
             }
         });
 
         if (response.ok) {
             const data = await response.json();
-            alert(data.message);
-            fetchNews(currentPage);  // 좋아요 후 현재 페이지 뉴스 목록 새로고침
+            console.log('Server Response:', data);  // 서버로부터 반환된 응답 확인
+
+            // LocalStorage에 저장된 likedArticles 목록 업데이트
+            let likedArticles = JSON.parse(localStorage.getItem('likedArticles')) || [];
+
+            // 버튼 상태 토글: 하트 아이콘을 직접 변경
+            const heartIcon = button.querySelector('i');
+            if (heartIcon.classList.contains('far')) {
+                heartIcon.classList.remove('far');
+                heartIcon.classList.add('fas');
+                // 좋아요한 기사 ID를 로컬 저장소에 추가
+                likedArticles.push(articleId);
+            } else {
+                heartIcon.classList.remove('fas');
+                heartIcon.classList.add('far');
+                // 좋아요 취소된 기사 ID를 로컬 저장소에서 제거
+                likedArticles = likedArticles.filter(id => id !== articleId);
+            }
+
+            // 업데이트된 likedArticles 목록을 다시 LocalStorage에 저장
+            localStorage.setItem('likedArticles', JSON.stringify(likedArticles));
+
+            // 좋아요 수 업데이트
+            const likesCountElement = button.previousElementSibling;  // 좋아요 수가 표시된 요소 찾기
+            likesCountElement.textContent = `좋아요 수: ${data.total_likes}`;  // 서버로부터 받은 총 좋아요 수로 업데이트
         } else {
             console.error("Failed to like article");
         }
