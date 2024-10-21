@@ -1,11 +1,11 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>A FIT DAY</title>
+    <title>상품 리스트</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="./main.css"> <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="product.css"> <!-- CSS 파일 링크 -->
 </head>
 <body>
     <!-- 네비게이션 바 -->
@@ -18,46 +18,34 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a> <!-- Home 링크를 list.html로 -->
+                        <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Post</a>
+                        <a class="nav-link active" aria-current="page" href="/static/post.html">Post</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link active" aria-current="page" href="/static/profile.html">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Chat-Bot</a>
-                    </li>
-                </ul>
-                <!-- 회원가입 | 로그인 -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/static/signup.html">회원가입</a>
+                        <a class="nav-link active" aria-current="page" href="/static/chatbot.html">Chat-Bot</a>
                     </li>
                     <li class="nav-item">
-                        <span class="nav-link">|</span>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/static/login.html">로그인</a>
+                        <a class="nav-link active" aria-current="page" href="/static/product.html">Market</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- 배경 이미지와 텍스트 -->
+    <!-- 배경 이미지와 텍스트 추가 -->
     <div class="header-image">
         <div class="overlay">
-            <h1>
-                A <span class="bold-text">FIT</span> DAY
-            </h1>
-            <p>핏한 하루는 스파르타 코딩클럽 부트캠프의 최종 팀 프로젝트입니다.<br>
-               AI 기반의 맞춤형 식단 및 운동 계획을 제공하는 다이어트 관리 플랫폼으로<br>
-               건강한 라이프스타일을 쉽게 실천할 수 있도록 돕습니다.
-            </p>
+            <h1>상품 리스트</h1>
         </div>
     </div>
+
+    <div id="product-list" class="product-list-container"></div> <!-- 클래스 추가 -->
+
 
     <!-- 푸터 -->
     <footer class="bg-dark text-white text-center py-4">
@@ -72,6 +60,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="./main.js"></script>
+    <script src="product.js"></script>
 </body>
+
 </html>
