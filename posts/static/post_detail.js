@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('post-likes').innerText = `좋아요: ${data.likes_count}`;
             document.getElementById('post-content').innerText = data.content;
             if (data.image) {
-                const imageUrl = `http://127.0.0.1:8000${data.image}`;  // 서버 URL에 /media 경로 추가
+                const imageUrl = `http://3.38.95.210${data.image}`;  // 서버 URL에 /media 경로 추가
                 document.getElementById('post-image').src = imageUrl;
             }
 

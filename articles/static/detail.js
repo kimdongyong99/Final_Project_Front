@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // API 호출을 통해 기사 데이터를 가져오는 함수
     async function fetchArticle() {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/articles/${articleId}/`);
+            const response = await fetch(`http://3.38.95.210/api/articles/${articleId}/`);
             if (response.ok) {
                 const articleData = await response.json();
                 displayArticle(articleData);
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         if (!articleId) return;
 
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/articles/${articleId}/comments/`);
+            const response = await fetch(`http://3.38.95.210/api/articles/${articleId}/comments/`);
             if (response.ok) {
                 const commentsData = await response.json();
 
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 return;
             }
 
-            const response = await fetch(`http://127.0.0.1:8000/api/articles/${articleId}/comments/`, {
+            const response = await fetch(`http://3.38.95.210/api/articles/${articleId}/comments/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/articles/comments/${commentId}/`, {
+            const response = await fetch(`http://3.38.95.210/api/articles/comments/${commentId}/`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         if (!confirm("정말로 이 댓글을 삭제하시겠습니까?")) return;
 
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/articles/comments/${commentId}/`, {
+            const response = await fetch(`http://3.38.95.210/api/articles/comments/${commentId}/`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('access_token')}`

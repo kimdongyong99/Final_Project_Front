@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch('http://127.0.0.1:8000/api/payment/products/')
+    fetch('http://3.38.95.210/api/payment/products/')
         .then(response => response.json())
         .then(data => {
             const productList = document.getElementById('product-list');

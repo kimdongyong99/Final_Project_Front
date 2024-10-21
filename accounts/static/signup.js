@@ -14,7 +14,7 @@ document.getElementById("send-verification-code").addEventListener("click", asyn
     const email = document.getElementById("email").value;
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/accounts/email-verification/", {
+        const response = await fetch("http://3.38.95.210/api/accounts/email-verification/", {
             method: "POST",
             body: JSON.stringify({ email: email }),
             headers: {
@@ -54,7 +54,7 @@ document.getElementById("signup-form").addEventListener("submit", async function
     }
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/accounts/signup/", {
+        const response = await fetch("http://3.38.95.210/api/accounts/signup/", {
             method: "POST",
             body: formData,
         });
