@@ -17,7 +17,7 @@ $(document).ready(function () {
         if (!hashtag.startsWith('#')) {
             hashtag = '#' + hashtag;
         }
-        const hashtagElement = `<li>${hashtag} <button type="button" class="remove-hashtag">제거</button></li>`;
+        const hashtagElement = `<li style="list-style-type: none;">${hashtag} <button type="button" class="remove-hashtag">제거</button></li>`;
         $('#hashtagList').append(hashtagElement);
     }
 
