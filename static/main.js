@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 document.addEventListener("DOMContentLoaded", async function() {
     // 로그인 여부에 따라 네비게이션 바 변경
     const authLinks = document.getElementById('auth-links');
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         `;
     }
 });
-=======
+
 // 페이지 로드 시 사용자 정보 가져오기
 window.onload = function() {
     fetch('http://localhost:8000/api/accounts/social-account/', {
@@ -78,4 +78,4 @@ function logout() {
     localStorage.removeItem('user_info');
     console.log('사용자 정보가 Local Storage에서 삭제되었습니다.');
 }
->>>>>>> e253ce15226dabbff8abd55c04e81226192d5474
+
