@@ -176,4 +176,6 @@ document.addEventListener("DOMContentLoaded", async function() {
                 <a class="nav-link" href="/static/login.html">로그인</a>
             </li>
         `;
-    }});
+
+    }
+});

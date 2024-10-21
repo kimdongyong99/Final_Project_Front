@@ -1,5 +1,70 @@
 @charset "utf-8";
 
+body {
+    font-family: Arial, sans-serif;
+}
+
+.post {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.post-image {
+width: 50px;
+height: auto; /* 이미지 비율 유지 */
+border-radius: 5px; /* 이미지 모서리 둥글게 */
+}
+
+.pagination-container {
+text-align: center;
+margin-top: 20px;
+}
+
+.pagination-container button {
+margin: 20px;
+padding: 10px 15px;
+border: none;
+color: rgb(0, 0, 0); /* 버튼 텍스트 색상 */
+cursor: pointer;
+border-radius: 5px; /* 버튼 모서리 둥글게 */
+}
+
+.pagination-container button:hover:not(.active) {
+background-color: #949494; /* 버튼 호버 색상 */
+}
+
+.pagination-container button.active {
+background-color: #333; /* 활성 버튼 색상 */
+}
+
+h1 {
+    color: #2e2e2e;
+    text-align: center;
+    margin: 20px;
+}
+p {
+    /* color: #2e2e2e; */
+    text-align: center;
+}
+
+footer {
+margin: 0;
+padding: 0;
+}
+
+.cell-content {
+padding: 10px; /* 패딩 추가 */
+border-radius: 5px; /* 모서리 둥글게 */
+background-color: #f9f9f9; /* 배경색 */
+transition: background-color 0.3s; /* 부드러운 전환 효과 */
+margin: 20px;
+}
+
+.cell-content:hover {
+    background-color: #e2e2e2; /* 마우스 오버 시 배경색 변경 */
+}
+
 #wrap {
     min-height: 20vh;
     position: relative;
@@ -36,8 +101,3 @@
     padding: 10px 20px; /* 텍스트 주위 여백 */
     border-radius: 8px; /* 모서리 둥글게 */
 }
-/* #pagination-container {
-    font-size: 15px;
-    margin: 150px;
-
-} */
