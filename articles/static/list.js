@@ -49,7 +49,7 @@ async function fetchNews(page = 1, search = "") {
 
             // 페이지네이션을 지원하는 구조인지 확인
             if (data.results) {
-                displayNews(data.results);  // 데이터의 결과 부분을 전달
+                displayNews(data.result);  // 데이터의 결과 부분을 전달
             } else {
                 displayNews(data);  // 전체 데이터를 전달
             }

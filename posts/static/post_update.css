@@ -1,33 +1,58 @@
-body {
-    font-family: Arial, sans-serif;
+@charset "utf-8";
+
+.header-image {
+    background-image: url('운동화.png')!important; /* 배경 이미지 경로 설정 */
+    background-color: black;
+    background-size: cover; /* 이미지를 화면 크기에 맞춤 */
+    background-position: center; /* 이미지를 가운데로 배치 */
+    height: 400px; /* 헤더 이미지 높이 */
+    position: relative; /* 텍스트를 겹치기 위해 relative로 설정 */
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    margin-bottom: 100px;
+}
+/* 텍스트 설정 */
+.overlay h1 {
+    color: white; /* 흰색 텍스트 */
+    font-size: 48px; /* 큰 글자 크기 */
+    text-align: center; /* 가운데 정렬 */
+    position: absolute; /* 절대 위치 */
+    top: 50%; /* 화면의 중앙에 위치 */
+    left: 50%;
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬을 위해 사용 */
+    padding: 10px 20px; /* 텍스트 주위 여백 */
+    border-radius: 8px; /* 모서리 둥글게 */
+}
+
+#hashtagList li button {
+    background: none;
+    border: none;
+    color: red;
+    margin-left: 5px;
+}
+
+.text-container {
+    margin: 10% 5% 10% 5%;
+    text-align: center;
 }
 
 .post {
-    border: 1px solid #ccc;
-    margin: 10px 0;
-    padding: 10px;
-}
-
-.post-title textarea {
-    margin: 10px 0;
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-textarea#content {
-    margin: 10px 0;
-    width: 100%;
-    height: 300px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 0 7% 0 7%;
 }
 
 .form-group {
-    margin: 20px 0;
+    text-align: left;
+    margin: 1% 0 1% 7%;
+}
+
+.hashtag {
+    margin-bottom: 2%;
+}
+
+.button {
+    text-align: right;
+    margin-right: 7%;
 }
 
 #hashtagsContainer {
@@ -47,27 +72,11 @@ textarea#content {
     border-radius: 20px;
 }
 
-#hashtagList li button {
-    background: none;
-    border: none;
-    color: red;
-    margin-left: 5px;
-}
 
 #hashtagInput {
     margin: 10px 0;
     padding: 10px;
-    width: 90%;
+    width: 83%;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-.form-buttons {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-}
-
-.form-buttons .btn {
-    margin-left: 10px;
 }

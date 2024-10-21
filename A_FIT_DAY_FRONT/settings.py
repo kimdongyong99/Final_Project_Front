@@ -125,10 +125,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+# settings.py
+
+# 정적 파일을 서빙할 경로 (개발 중 사용할 경로)
 STATICFILES_DIRS = [
-os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),  # 프로젝트의 'static' 폴더
 ]
+
+# collectstatic 명령으로 정적 파일을 모아둘 경로 (배포용)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # media files
 

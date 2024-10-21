@@ -11,134 +11,43 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="post.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
 
-        .post {
-            border: 1px solid #ccc;
-            margin: 10px 0;
-            padding: 10px;
-        }
-
-            /* .table-container { */
-        /* max-width: 800px; 최대 너비 설정 */
-        /* margin: 20px auto; 중앙 정렬 */
-        /* margin: 0;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    } */
-
-    /* .table {
-        width: 100%;
-        border-collapse: collapse; */
-        /* background-color: #ffffff; 배경색 */
-    /* } */
-
-    /* .table th, .table td {
-        border: 1px solid #ddd;
-        padding: 12px;
-        text-align: center;
-    } */
-/* 
-    .table th { */
-        /* background-color: none; 헤더 배경색 */
-        /* color: rgb(0, 0, 0); 헤더 텍스트 색상 */
-    /* } */
-    /* .table td {
-        border: 4px solid #060606;
-    } */
-
-    /* .table tr:nth-child(even) { */
-        /* background-color: #f2f2f2; 짝수 행 배경색 */
-    /* } */
-
-    /* .table tr:hover {
-        background-color: #f1f1f1; /* 마우스 호버 효과 */
-    /* } */
-
-    .post-image {
-        width: 50px;
-        height: auto; /* 이미지 비율 유지 */
-        border-radius: 5px; /* 이미지 모서리 둥글게 */
-    }
-
-    .pagination-container {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .pagination-container button {
-        margin: 20px;
-        padding: 10px 15px;
-        border: none;
-        color: rgb(0, 0, 0); /* 버튼 텍스트 색상 */
-        cursor: pointer;
-        border-radius: 5px; /* 버튼 모서리 둥글게 */
-    }
-
-    .pagination-container button:hover:not(.active) {
-        background-color: #949494; /* 버튼 호버 색상 */
-    }
-
-    .pagination-container button.active {
-        background-color: #333; /* 활성 버튼 색상 */
-    }
-
-        h1 {
-            color: #2e2e2e;
-            text-align: center;
-            margin: 20px;
-        }
-        p {
-            /* color: #2e2e2e; */
-            text-align: center;
-        }
-        footer {
-        margin: 0;
-        padding: 0;
-        }
-        .cell-content {
-        padding: 10px; /* 패딩 추가 */
-        border-radius: 5px; /* 모서리 둥글게 */
-        background-color: #f9f9f9; /* 배경색 */
-        transition: background-color 0.3s; /* 부드러운 전환 효과 */
-        margin: 20px;
-        }
-
-        .cell-content:hover {
-            background-color: #e2e2e2; /* 마우스 오버 시 배경색 변경 */
-        }
     </style>
 </head>
 
 <body>
+    <!-- 네비게이션 바 -->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/static/main.html"><img class="d-block width-80" src="A FIT DAY.png"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/static/post.html">Post</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/static/profile.html">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/static/chatbot.html">Chat-Bot</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ms-auto">
+
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/static/login.html">로그아웃</a>
+                        <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/static/post.html">Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/static/product.html">Market</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/static/map.html">Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/static/chatbot.html">Chat-Bot</a>
+                    </li>
+                </ul>
+
+
+                <!-- 로그인 상태에 따라 이 부분이 동적으로 변경됩니다 -->
+                <ul class="navbar-nav" id="auth-links">
+                    <!-- 로그인 상태에서는 프로필, 로그아웃 링크가 들어가고 -->
+                    <!-- 비로그인 상태에서는 회원가입, 로그인 링크가 들어갑니다 -->
                 </ul>
             </div>
         </div>
@@ -152,7 +61,7 @@
     </div>
     </div>
     <!-- 검색 -->
-    <div class="d-flex justify-content-center" style="margin: 20px;">
+    <div class="d-flex justify-content-center" style="margin: 40px;">
         <form action="post.html" method="GET">
             <input type="text" name="search_word" placeholder="검색어를 입력하세요" class="d-block:80;" required>
             <select name="type">
@@ -167,7 +76,7 @@
         <!-- 게시글 목록 가져오기 -->
 <div class="container">
     <h1>게시글 목록</h1>
-    <button type="button" class="btn btn-dark" onclick="location.href='post_create.html';" style="float: right;">글쓰기</button><br>
+    <button type="button" class="btn btn-dark" onclick="location.href='post_create.html';" style="float: right; margin-right: 100px;">글쓰기</button><br><br><br>
     <div id="data-container" class="row text-center" href="post_detail.html"></div>
 </div>
 

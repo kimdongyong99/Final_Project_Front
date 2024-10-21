@@ -13,61 +13,41 @@
             font-family: Arial, sans-serif;
         }
 
-        .post {
-            border: 1px solid #ccc;
-            margin: 10px 0;
-            padding: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px solid #ccc;
-            padding: 10px 50;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-
-        textarea {
-            margin: 10px 0;
-            display: flex;
-        }
     </style>
 </head>
 
 <body>
-    <!--navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <!-- 네비게이션 바 -->
+    <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">A FIT DAY</a>
+            <a class="navbar-brand" href="/static/main.html"><img class="d-block width-80" src="A FIT DAY.png"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/static/list.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/static/list.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/static/post.html">Post</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/static/profile.html">Profile</a>
+                        <a class="nav-link" href="/static/product.html">Market</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/static/map.html">Map</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/static/chatbot.html">Chat-Bot</a>
                     </li>
                 </ul>
-            </div>
-            <div class="navbar-right">
-                <a class="nav-link" href="#">로그아웃</a>
+
+                <!-- 로그인 상태에 따라 이 부분이 동적으로 변경됩니다 -->
+                <ul class="navbar-nav" id="auth-links">
+                    <!-- 로그인 상태에서는 프로필, 로그아웃 링크가 들어가고 -->
+                    <!-- 비로그인 상태에서는 회원가입, 로그인 링크가 들어갑니다 -->
+                </ul>
             </div>
         </div>
     </nav>
@@ -80,33 +60,34 @@
     </div>
 
     <!-- 게시글 작성 -->
-    <form id="postForm" enctype="multipart/form-data"> <!-- enctype 추가 -->
-        <div class="post-title">
-            <textarea id="post-title-inp" class="textarea_tit" placeholder="제목을 입력하세요"
-                style="width: 1000px; height: 40px !important;"></textarea>
-        </div>
-        <textarea id="content" name="content" style="width: 1000px; height: 500px !important;" required></textarea>
-
-        <!-- 파일 첨부 -->
-        <div class="form-group">
-            <label for="exampleFormControlFile1" style="margin-left: 860px;">첨부파일</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-        </div>
-
-        <!-- 해시태그 -->
-        <div id="hashtagsContainer">
-            <input type="text" id="hashtagInput" placeholder="해시태그 입력 (예: #example)"
-                style="width:904px; margin-left: 150px;">
-            <button type="button" id="addHashtagButton" class="btn btn-light">추가</button>
-            <ul id="hashtagList"></ul>
-        </div>
-
-        <!-- 버튼 -->
-        <div>
-             <button type="button" id="cancelButton" class="btn btn-light"  style="margin-left: 1000px;">취소</button>
-            <button type="submit" class="btn btn-dark" style="position: relative;">저장</button>
-        </div>
-    </form>
+    <div class="text-container">
+        <form id="postForm" enctype="multipart/form-data"> <!-- enctype 추가 -->
+            <div class="post">
+                <textarea id="post-title-inp" placeholder="제목을 입력하세요" class="form-control" cols="180" rows="2"></textarea>
+                <br>
+                <textarea id="content" name="content" class="form-control" cols="180" rows="40"required></textarea>
+            </div>
+    
+            <!-- 파일 첨부 -->
+            <div class="form-group">
+                <label for="exampleFormControlFile1">첨부파일</label>
+                <input type="file" id="exampleFormControlFile1">
+            </div>
+    
+            <!-- 해시태그 -->
+            <div id="hashtagsContainer" class="hashtag">
+                <input type="text" id="hashtagInput" placeholder="해시태그 입력 (예: #example)" size="176">
+                <button type="button" id="addHashtagButton" class="btn btn-light">추가</button>
+                <ul id="hashtagList"></ul>
+            </div>
+    
+            <!-- 버튼 -->
+            <div class="button">
+                <button type="button" id="cancelButton" class="btn btn-light">취소</button>
+                <button type="submit" class="btn btn-dark">저장</button>
+            </div>
+        </form>
+    </div>
 
     <!-- js 연결 -->
     <script src="./post_create.js"></script>
