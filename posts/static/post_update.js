@@ -90,6 +90,11 @@ $(document).ready(function () {
         });
     });
 
+    document.getElementById('cancelButton').addEventListener('click', function() {
+        window.location.href = `post_detail.html?id=${postId}`;  // 취소 버튼 클릭 시 이동할 페이지
+    
+    });
+
     // URL에서 postId를 추출하는 함수 (예: ?id=1 형태)
     function getPostIdFromURL() {
         const queryString = window.location.search;
