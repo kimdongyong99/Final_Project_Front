@@ -7,7 +7,7 @@ document.getElementById('login-form').addEventListener('submit', async function(
 
     try {
         // 로그인 API 요청
-        const response = await fetch('http://127.0.0.1:8000/api/accounts/login/', {
+        const response = await fetch('http://3.38.95.210/api/accounts/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

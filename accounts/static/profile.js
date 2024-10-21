@@ -46,7 +46,7 @@ async function displayLikedPosts() {
     if (access_token && username) {
         try {
             // 사용자가 좋아요한 게시글 목록 가져오기
-            const response = await fetch(`http://127.0.0.1:8000/api/posts/${username}/liked_posts`, {
+            const response = await fetch(`http://3.38.95.210/api/posts/${username}/liked_posts`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${access_token}` // 토큰 필요 시 사용
@@ -83,7 +83,7 @@ async function displayLikedArticles() {
     if (access_token && username) {
         try {
             // 사용자가 좋아요한 기사 목록 가져오기
-            const response = await fetch(`http://127.0.0.1:8000/api/articles/${username}/liked_articles`, {
+            const response = await fetch(`http://3.38.95.210/api/articles/${username}/liked_articles`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${access_token}` // 토큰 필요 시 사용
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const username = localStorage.getItem("username"); 
 
     if (access_token) {
-        const response = await fetch(`http://127.0.0.1:8000/api/accounts/${localStorage.getItem("username")}/`, {
+        const response = await fetch(`http://3.38.95.210/api/accounts/${localStorage.getItem("username")}/`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("access_token")}` // 토큰 필요 시 사용
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             const profileImage = document.getElementById('my-profile');
             if (data.profile_image) {
                 // 서버에서 받은 프로필 이미지 경로 설정
-                profileImage.src = `http://127.0.0.1:8000${data.profile_image}`;
+                profileImage.src = `http://3.38.95.210${data.profile_image}`;
             } else {
                 // 기본 이미지 설정 (프로필 이미지가 없는 경우)
                 profileImage.src = '/static/img.png';
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         });
 
         // 사용자가 작성한 게시글 목록 가져오기
-        await fetch(`http://127.0.0.1:8000/api/posts/?author=${username}`, {
+        await fetch(`http://3.38.95.210/api/posts/?author=${username}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${access_token}`
