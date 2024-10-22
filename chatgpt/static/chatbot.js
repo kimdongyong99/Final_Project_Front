@@ -18,7 +18,7 @@ function sendMessage() {
     addMessageToChat("user", message);
 
     // POST 요청을 통해 Django 백엔드에 메시지 전송
-    fetch('http://3.38.95.210/api/chat_gpt/', {
+    fetch('https://3.38.95.210/api/chat_gpt/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

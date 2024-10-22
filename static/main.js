@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 // 페이지 로드 시 사용자 정보 가져오기
 window.onload = function() {
-    fetch('http://3.38.95.210/api/accounts/social-account/', {
+    fetch('https://3.38.95.210/api/accounts/social-account/', {
         method: 'GET',
         credentials: 'include',  // 자격 증명(쿠키 등) 포함
     })

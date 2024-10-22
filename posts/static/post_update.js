@@ -1,6 +1,6 @@
 $(document).ready(function () {
     const postId = getPostIdFromURL(); // 게시글 ID를 URL에서 추출
-    const postUrl = `http://3.38.95.210/api/posts/${postId}/`; // 백엔드 수정 API URL
+    const postUrl = `https://3.38.95.210/api/posts/${postId}/`; // 백엔드 수정 API URL
     // JWT 토큰 가져오기 (예: localStorage에 저장된 토큰)
     const token = localStorage.getItem('access_token');  // 로그인 시 저장된 JWT 토큰을 가져옴
 
