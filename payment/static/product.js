@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch('https://3.38.95.210/api/payment/products/')
+    fetch('https://afitday.shop/api/payment/products/')
         .then(response => response.json())
         .then(data => {
             const productList = document.getElementById('product-list');

@@ -40,7 +40,7 @@ function displayNews(newsData) {
 
 // 뉴스 데이터를 가져오는 함수 (페이지를 쿼리로 포함)
 async function fetchNews(page = 1, search = "") {
-    const url = search ? `https://3.38.95.210/api/articles/news/?search=${search}&page=${page}` : `https://3.38.95.210/api/articles/news/?page=${page}`;
+    const url = search ? `https://afitday.shop/api/articles/news/?search=${search}&page=${page}` : `https://afitday.shop/api/articles/news/?page=${page}`;
     try {
         const response = await fetch(url);
         if (response.ok) {
@@ -74,7 +74,7 @@ async function likeArticle(articleId, button) {
             return; // 로그인되지 않은 경우 함수 종료
         }
 
-        const response = await fetch(`https://3.38.95.210/api/articles/${articleId}/like/`, {
+        const response = await fetch(`https://afitday.shop/api/articles/${articleId}/like/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
