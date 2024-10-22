@@ -24,6 +24,8 @@ fetch(searchQuery)
     })
     .then(data => {
         posts = data.results || []; // 데이터를 posts 배열에 할당
+        // 게시글을 최신순으로 정렬
+        posts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
         displayPosts(currentPage); // 현재 페이지의 게시글 표시
         console.log(data); // 받은 데이터 처리
     })
@@ -100,40 +102,10 @@ function goToPostDetail(postId) {
     window.location.href = `/post/${postId}`; // 상세 페이지로 이동
 }
 
-// 예시: 게시글 상세 페이지 로드 시
-document.addEventListener('DOMContentLoaded', () => {
-    const postId = getPostIdFromUrl(); // URL에서 게시글 ID 가져오기
-    fetchPostDetail(postId); // 게시글 상세 정보 가져오기
-});
-
 // URL에서 게시글 ID를 가져오는 함수
 function getPostIdFromUrl() {
     const pathSegments = window.location.pathname.split('/');
     return pathSegments[pathSegments.length - 1]; // 마지막 세그먼트가 ID
-}
-
-// 게시글 상세 정보를 가져오는 함수
-function fetchPostDetail(postId) {
-    fetch(`https://afitday.shop/api/posts/${postId}/`) // API URL 수정
-        .then(response => response.json())
-        .then(data => {
-            displayPostDetail(data); // 상세 페이지에 데이터 표시
-        })
-        .catch(error => {
-            console.error('Error fetching post detail:', error);
-        });
-}
-
-// 게시글 상세 정보를 표시하는 함수
-function displayPostDetail(post) {
-    const container = document.getElementById('post-detail-container'); // 상세 페이지 컨테이너
-    container.innerHTML = `
-        <h2>${post.title}</h2>
-        <img src='${post.image}' alt='Post Image' />
-        <p>작성자: ${post.author}</p>
-        <p>${post.content}</p>
-        <p>추천 수: ${post.likes_count}</p>
-    `;
 }
 
 document.addEventListener("DOMContentLoaded", async function() {
