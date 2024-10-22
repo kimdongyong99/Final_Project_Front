@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     try {
         const username = localStorage.getItem("username");
         const access_token = localStorage.getItem('access_token');
-        const response = await fetch(`http://3.38.95.210/api/accounts/${username}/`, {
+        const response = await fetch(`https://3.38.95.210/api/accounts/${username}/`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${access_token}`
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             const profileImage = document.getElementById('update-profile');
             if (data.profile_image) {
                 // 기존 프로필 이미지를 설정
-                profileImage.src = `http://3.38.95.210${data.profile_image}`;
+                profileImage.src = `https://3.38.95.210${data.profile_image}`;
             } else {
                 // 기본 프로필 이미지 설정 (이미지가 없는 경우)
                 profileImage.src = '/static/img.png';
@@ -62,7 +62,7 @@ document.getElementById("profile-update-form").addEventListener("submit", async 
 
 
         // 회원정보 수정 요청
-        const response = await fetch(`http://3.38.95.210/api/accounts/${localStorage.getItem("username")}/`, {
+        const response = await fetch(`https://3.38.95.210/api/accounts/${localStorage.getItem("username")}/`, {
             method: "PUT",
             body: formData,
             headers: {
