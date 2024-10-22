@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const productId = urlParams.get('id');  // URL에서 상품 ID 추출
 
     // 상품 정보 불러오기
-    fetch(`https://3.38.95.210/api/payment/products/${productId}/`)
+    fetch(`https://afitday.shop/api/payment/products/${productId}/`)
         .then(response => response.json())
         .then(product => {
             const productDetail = document.getElementById('product-detail');
@@ -58,7 +58,7 @@ const onClickPay = (productName, productPrice, pgType, productId) => {  // produ
     }, function (rsp) {
         if (rsp.success) {
             // 결제 성공 시 백엔드로 결제 정보 전송
-            fetch('https://3.38.95.210/api/payment/complete/', {
+            fetch('https://afitday.shop/api/payment/complete/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

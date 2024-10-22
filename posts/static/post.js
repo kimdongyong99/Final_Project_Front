@@ -1,4 +1,4 @@
-const apiUrl = 'https://3.38.95.210/api/posts/';
+const apiUrl = 'https://afitday.shop/api/posts/';
 
 let currentPage = 1; // 현재 페이지
 const itemsPerPage = 10; // 한 페이지당 항목 수
@@ -114,7 +114,7 @@ function getPostIdFromUrl() {
 
 // 게시글 상세 정보를 가져오는 함수
 function fetchPostDetail(postId) {
-    fetch(`https://3.38.95.210/api/posts/${postId}/`) // API URL 수정
+    fetch(`https://afitday.shop/api/posts/${postId}/`) // API URL 수정
         .then(response => response.json())
         .then(data => {
             displayPostDetail(data); // 상세 페이지에 데이터 표시

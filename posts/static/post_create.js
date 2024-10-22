@@ -53,7 +53,7 @@ $(document).ready(function () {
 
         // 게시글 저장 API 호출 (AJAX 요청)
         $.ajax({
-            url: 'https://3.38.95.210/api/posts/',  // 백엔드 게시글 저장 API URL
+            url: 'https://afitday.shop/api/posts/',  // 백엔드 게시글 저장 API URL
             type: 'POST',
             processData: false,  // FormData 사용 시 false로 설정
             contentType: false,  // FormData 사용 시 false로 설정
