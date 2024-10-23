@@ -1,6 +1,6 @@
-function displayPostList(posts) {
+function displayPostList(posts, username) {
     const containers = document.getElementsByClassName('profile-post-list');
-    
+
     // 컨테이너가 존재하지 않으면 오류 출력
     if (containers.length === 0) {
         console.error("게시글 제목을 표시할 컨테이너가 없습니다.");
@@ -8,7 +8,6 @@ function displayPostList(posts) {
     }
 
     const container = containers[0]; // 첫 번째 컨테이너를 선택
-    console.log(container);  // container가 ul 요소인지 확인
 
     // 컨테이너가 ul 요소인지 확인
     if (!(container instanceof HTMLUListElement)) {
@@ -16,36 +15,31 @@ function displayPostList(posts) {
         return;
     }
 
-    const ulElement = document.createElement('li');
+    // 게시글 목록 초기화
+    container.innerHTML = '';
 
     // posts 배열에서 각 게시글을 순회하면서 목록에 추가
-    posts.forEach(post => {
-        const liElement = document.createElement('li');
-        liElement.innerHTML = `<a href="/static/post_detail.html?id=${post.id}" style="text-decoration: none; color: inherit;">${post.title}</a>`; 
-        container.appendChild(liElement); 
-    });
-
-    // 좋아요한 게시글 목록을 가져와서 추가
-    const favoriteContainer = document.getElementsByClassName('profile-liked-postlist')[0];  // 좋아요한 게시글 컨테이너
-    if (favoriteContainer) {
-        // 좋아요한 게시글 추가 처리
-        favoriteContainer.innerHTML = ''; // 기존 좋아요한 게시글 목록 초기화
+    if (posts.length === 0) {
+        container.innerHTML = '<li>작성한 게시글이 없습니다.</li>'; // 게시글이 없을 때 처리
+    } else {
         posts.forEach(post => {
-            const liElement = document.createElement('li');
-            liElement.innerHTML = `<a href="/static/post_detail.html?id=${post.id}" style="text-decoration: none; color: inherit;">${post.title}</a>`; 
-            favoriteContainer.appendChild(liElement);
+            // 게시글의 작성자가 현재 로그인한 사용자와 일치하는지 확인
+            if (post.author === username) {
+                const liElement = document.createElement('li');
+                liElement.innerHTML = `<a href="/static/post_detail.html?id=${post.id}" style="text-decoration: none; color: inherit;">${post.title}</a>`;
+                container.appendChild(liElement);
+            }
         });
     }
 }
 
-// 좋아요한 게시글을 가져와서 표시하는 함수 추가
 async function displayLikedPosts() {
     const access_token = localStorage.getItem('access_token');
     const username = localStorage.getItem("username");
 
     if (access_token && username) {
         try {
-            // 사용자가 좋아요한 게시글 목록 가져오기
+            // 좋아요한 게시글 목록 가져오기 (별도의 API로 좋아요한 게시글만 가져옵니다)
             const response = await fetch(`https://afitday.shop/api/posts/${username}/liked_posts`, {
                 method: "GET",
                 headers: {
@@ -65,7 +59,7 @@ async function displayLikedPosts() {
                 data.results.forEach(post => {
                     const liElement = document.createElement('li');
                     const postDetailUrl = `/static/post_detail.html?id=${post.id}`;  // 게시글 ID로 상세 페이지 링크 생성
-                    liElement.innerHTML = `<a href="${postDetailUrl}" style="text-decoration: none; color: inherit;">${post.title}</a>`; 
+                    liElement.innerHTML = `<a href="${postDetailUrl}" style="text-decoration: none; color: inherit;">${post.title}</a>`;
                     favoriteContainer.appendChild(liElement);
                 });
             }
@@ -101,7 +95,7 @@ async function displayLikedArticles() {
                 data.results.forEach(article => {
                     const liElement = document.createElement('li');
                     liElement.innerHTML = `<a href="/static/detail.html?id=${article.id}" style="text-decoration: none; color: inherit;">${article.title}</a>`;
-                    
+
                     // 구분선 추가
                     const hrElement = document.createElement('hr');
                     liElement.appendChild(hrElement);  // 각 기사 아래에 구분선 추가
@@ -114,36 +108,30 @@ async function displayLikedArticles() {
         }
     }
 }
-
 document.addEventListener("DOMContentLoaded", async function() {
-
     const access_token = localStorage.getItem('access_token');  // localStorage에서 토큰 확인
-    const username = localStorage.getItem("username"); 
+    const username = localStorage.getItem("username");
 
     if (access_token) {
-        const response = await fetch(`https://afitday.shop/api/accounts/${localStorage.getItem("username")}/`, {
+        // 사용자 프로필 정보 가져오기
+        const response = await fetch(`https://afitday.shop/api/accounts/${username}/`, {
             method: "GET",
             headers: {
-                "Authorization": `Bearer ${localStorage.getItem("access_token")}` // 토큰 필요 시 사용
+                "Authorization": `Bearer ${access_token}` // 토큰 필요 시 사용
             }
         }).then(response => response.json()).then(data=> {
             document.getElementById('username').textContent = data.username;
             document.getElementById('email').textContent = data.email;
             document.getElementById('address').textContent = data.address;
             document.getElementById("detail_address").textContent = data.detail_address;
-            console.log(data);
 
             // 프로필 이미지 설정
             const profileImage = document.getElementById('my-profile');
             if (data.profile_image) {
-                // 서버에서 받은 프로필 이미지 경로 설정
                 profileImage.src = `https://afitday.shop${data.profile_image}`;
             } else {
-                // 기본 이미지 설정 (프로필 이미지가 없는 경우)
                 profileImage.src = '/static/human.png';
             }
-
-            console.log(data);  // 데이터를 확인
         })
         .catch(error => {
             console.error('프로필 정보를 불러오는 중 문제가 발생했습니다.', error);
@@ -158,18 +146,20 @@ document.addEventListener("DOMContentLoaded", async function() {
         })
         .then(response => response.json())
         .then(data => {
-            displayPostList(data.results);  // 게시글 제목 목록 표시 함수 호출
+            console.log(data); // 게시글 데이터가 제대로 있는지 확인
+            displayPostList(data.results, username);  // 게시글 제목 목록 표시 함수 호출
         })
         .catch(error => {
             console.error('게시글 목록을 불러오는 중 문제가 발생했습니다.', error);
         });
 
-        // 좋아요한 게시글 목록 표시
+        // 좋아요한 게시글 목록 표시 (이제 이 함수는 별도의 API에서 좋아요한 게시글만 가져옵니다)
         await displayLikedPosts();
         // 좋아요한 기사 목록 표시
         await displayLikedArticles();  // 좋아요한 기사 목록 표시
     }
 });
+
 
     // 회원 정보 수정 버튼 클릭 시 profile_update.html로 이동
     const profileEditButton = document.getElementById('profile-edit-btn');
