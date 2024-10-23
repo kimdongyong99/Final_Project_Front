@@ -168,9 +168,6 @@ Nginx는 비동기 처리 방식으로 높은 성능과 낮은 리소스 사용�
 ## 6. Map
 - 사용자가 주변의 헬스장,병원,건강 식품점 등 건강과 관련된 장소를 쉽게 찾을 수 있도록 지도 기반 검색 기능을 추가하여 사용자 편의성을 극대화할 수 있습니다
 
-# Backend
-- https://github.com/kimdongyong99/Final_Project/edit/dev/README.md
-
 # 📃 ERD Diagram
 ![image](https://github.com/user-attachments/assets/bd8106f2-eeb4-4802-8846-853dc68824ac)
 
