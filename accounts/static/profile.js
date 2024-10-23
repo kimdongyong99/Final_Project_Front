@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 profileImage.src = `https://afitday.shop${data.profile_image}`;
             } else {
                 // 기본 이미지 설정 (프로필 이미지가 없는 경우)
-                profileImage.src = '/static/img.png';
+                profileImage.src = '/static/human.png';
             }
 
             console.log(data);  // 데이터를 확인
