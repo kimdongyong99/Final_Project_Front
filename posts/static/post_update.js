@@ -55,37 +55,44 @@ $(document).ready(function () {
     // 게시글 수정 처리
     $('#postForm').submit(function (e) {
         e.preventDefault();
-
+    
         // 해시태그를 배열로 수집
         const hashtags = [];
         $('#hashtagList li').each(function () {
             const hashtagText = $(this).text().replace(" 제거", "").trim();
-            // 중복 # 방지를 위해 두 번 붙지 않도록 처리
             hashtags.push(hashtagText.startsWith("#") ? hashtagText : `#${hashtagText}`);
         });
-
-        // 제목과 내용 가져오기
-        const postData = {
-            title: $('#post-title-inp').val().trim(),
-            content: $('#content').val().trim(),
-            hashtags: hashtags
-        };
-
+    
+        // FormData를 사용하여 파일과 데이터를 함께 전송
+        const formData = new FormData();
+        formData.append('title', $('#post-title-inp').val().trim());
+        formData.append('content', $('#content').val().trim());
+    
+        // 해시태그 추가
+        formData.append('hashtags', hashtags.join(','));  // 쉼표로 구분된 해시태그 문자열
+    
+        // 파일 첨부 처리
+        const fileInput = $('#exampleFormControlFile1')[0].files[0];
+        if (fileInput) {
+            formData.append('image', fileInput);  // 파일 필드 이름을 'image'로 추가
+        }
+    
         // 게시글 수정 API 호출
         $.ajax({
             url: postUrl,
-            type: 'PUT',
-            contentType: 'application/json',
+            type: 'PUT',  // PUT 요청
+            processData: false,  // FormData 사용 시 false로 설정
+            contentType: false,  // FormData 사용 시 false로 설정
             headers: {
                 "Authorization": `Bearer ${token}`  // JWT 토큰을 Authorization 헤더에 추가
             },
-            data: JSON.stringify(postData),
+            data: formData,
             success: function (response) {
                 alert('게시글이 성공적으로 수정되었습니다.');
-                window.location.href = `post_detail.html?id=${postId}` // 수정 후 게시글 상세 페이지로 이동
+                window.location.href = `post_detail.html?id=${postId}`;  // 수정 후 게시글 상세 페이지로 이동
             },
-            error: function () {
-                alert('게시글 수정에 실패했습니다.');
+            error: function (xhr) {
+                alert('게시글 수정에 실패했습니다. 오류 메시지: ' + xhr.responseText);
             }
         });
     });
